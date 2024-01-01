@@ -1,0 +1,37 @@
+@layer components {
+    .base__button {
+        @apply flex justify-center items-center gap-x-1 p-2 rounded-lg w-max min-w-6 min-h-6 transition-colors duration-100;
+    }
+
+    .button__text--default {
+        @apply text-foreground hover:bg-foreground/5;
+
+        &:disabled {
+            @apply hover:text-foreground hover:bg-foreground/0 opacity-20 select-none;
+        }
+    }
+
+    .button__text--accent {
+        @apply text-accent-light hover:bg-accent/5;
+
+        &:disabled {
+            @apply hover:text-accent-light hover:bg-transparent opacity-20 select-none;
+        }
+    }
+
+    .button__filled--default {
+        @apply text-foreground bg-gradient-to-b from-background-light to-background hover:from-background hover:to-background-dark shadow-sm shadow-black/25;
+
+        &:disabled {
+            @apply hover:from-background-light hover:to-background opacity-20;
+        }
+    }
+
+    .button__filled--accent {
+        @apply text-accent-foreground bg-gradient-to-b from-accent to-accent-dark hover:from-accent-light hover:to-accent shadow-sm shadow-black/25;
+
+        &:disabled {
+            @apply hover:from-accent hover:to-accent-dark opacity-20;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@layer components {
+    .dialog {
+        @apply fixed inset-0 z-modal grid place-items-center gap-4;
+        grid-template:
+            ". . ." 1fr
+            ". m ." minmax(0px, 315px)
+            ". . ." 1fr / 1fr minmax(0px, 650px) 1fr;
+    }
+
+    .dialog__overlay {
+        @apply bg-black/60 absolute inset-0;
+    }
+
+    .dialog__panel {
+        @apply bg-background-light grid grid-cols-1 grid-rows-[max-content_1fr] rounded-xl;
+    }
+
+    .dialog__panel__outer {
+        @apply justify-self-stretch self-stretch [grid-area:m] grid grid-cols-1 grid-rows-1;
+    }
+}

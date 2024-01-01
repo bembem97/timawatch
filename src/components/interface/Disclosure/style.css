@@ -1,0 +1,15 @@
+@layer components {
+    .disclosure__button {
+        @apply grid items-center gap-x-1;
+        grid-template-columns: auto max-content 1fr;
+        grid-template-areas: "i1 . i2";
+
+        & > svg.i1 {
+            grid-area: i1;
+        }
+        & > svg.i2 {
+            grid-area: i2;
+            justify-self: end;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@layer components {
+    .base__icon {
+        @apply select-none fill-current shrink-0 transition-colors duration-100;
+    }
+
+    .icon--sm {
+        @apply text-base w-4 h-4;
+    }
+    .icon--md {
+        @apply text-xl w-5 h-5;
+    }
+}
