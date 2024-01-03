@@ -1,0 +1,17 @@
+@layer components {
+    .form-control {
+        @apply inline-flex rounded-lg [contain:paint] focus-within:outline-accent/60 focus-within:outline focus-within:outline-1 border border-foreground/[0.15] min-h-11;
+    }
+
+    .form-control__input {
+        @apply grow basis-auto pl-2 p-1 bg-transparent focus:outline-none;
+    }
+
+    .form-control__button {
+        @apply min-w-5 max-h-14 shrink-0 self-stretch;
+
+        & > button {
+            @apply h-full w-12;
+        }
+    }
+}

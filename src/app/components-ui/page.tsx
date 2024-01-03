@@ -1,4 +1,10 @@
-import { Bars3CenterLeftIcon, HeartIcon, UserIcon } from "@heroicons/react/20/solid"
+import {
+    Bars3CenterLeftIcon,
+    HeartIcon,
+    MagnifyingGlassIcon,
+    StarIcon,
+    UserIcon,
+} from "@heroicons/react/20/solid"
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import Button from "~/components/interface/Button"
@@ -7,6 +13,10 @@ import Container from "~/components/interface/Container"
 import Icon from "~/components/interface/Icon"
 import Link from "~/components/interface/Link"
 import Text from "~/components/interface/Text"
+import TextField from "~/components/interface/TextField"
+import FormButton from "~/components/interface/TextField/FormButton"
+import FormControl from "~/components/interface/TextField/FormControl"
+import Input from "~/components/interface/TextField/Input"
 import Accordion from "~/components/test/Accordion"
 import ComboBoxAutoComplete from "~/components/test/ComboBoxAutoComplete"
 import ListBoxSelector from "~/components/test/ListBoxSelector"
@@ -143,38 +153,72 @@ export default function ComponentsUI() {
             </Wrapper>
 
             <Wrapper title="Chip">
-                <div className="flex gap-x-4">
+                <div className="flex gap-x-4 flex-wrap">
                     <div className="flex flex-col gap-y-2">
                         <Text variant="caption">Non-interactive</Text>
 
-                        <Chip variant="filled" color="default">
-                            Chip Label
-                        </Chip>
-                        <Chip variant="outlined" color="default">
-                            Chip Label
-                        </Chip>
-                        <Chip variant="filled" color="accent">
-                            Chip Label
-                        </Chip>
-                        <Chip variant="outlined" color="accent">
-                            Chip Label
-                        </Chip>
+                        <Chip variant="filled" color="default" label="Chip Label" />
+
+                        <Chip variant="outlined" color="default" label="Chip Label" />
+
+                        <Chip variant="filled" color="accent" label="Chip Label" />
+
+                        <Chip variant="outlined" color="accent" label="Chip Label" />
                     </div>
                     <div className="flex flex-col gap-y-2">
                         <Text variant="caption">Clickable</Text>
 
-                        <Chip variant="filled" color="default" clickable>
-                            Chip Label
-                        </Chip>
-                        <Chip variant="outlined" color="default" clickable>
-                            Chip Label
-                        </Chip>
-                        <Chip variant="filled" color="accent" clickable>
-                            Chip Label
-                        </Chip>
-                        <Chip variant="outlined" color="accent" clickable>
-                            Chip Label
-                        </Chip>
+                        <Chip variant="filled" color="default" clickable label="Chip Label" />
+
+                        <Chip variant="outlined" color="default" clickable label="Chip Label" />
+
+                        <Chip variant="filled" color="accent" clickable label="Chip Label" />
+
+                        <Chip variant="outlined" color="accent" clickable label="Chip Label" />
+                    </div>
+                    <div className="flex flex-col gap-y-2">
+                        <Text variant="caption">With Icon</Text>
+
+                        <Chip
+                            variant="filled"
+                            color="default"
+                            iconStart={<Icon size="sm" icon={StarIcon} />}
+                            label="Chip Label"
+                        />
+
+                        <Chip
+                            variant="outlined"
+                            color="default"
+                            iconStart={<Icon size="sm" icon={StarIcon} />}
+                            label="Chip Label"
+                        />
+
+                        <Chip
+                            variant="filled"
+                            color="accent"
+                            iconStart={<Icon size="sm" icon={StarIcon} />}
+                            label="Chip Label"
+                        />
+
+                        <Chip
+                            variant="outlined"
+                            color="accent"
+                            iconStart={<Icon size="sm" icon={StarIcon} />}
+                            label="Chip Label"
+                        />
+                    </div>
+                </div>
+            </Wrapper>
+
+            <Wrapper title="TextField">
+                <div className="flex gap-x-4">
+                    <div className="flex flex-col gap-y-4">
+                        <TextField placeholder="Type something..." />
+
+                        <FormControl>
+                            <Input type="search" placeholder="Type something..." />
+                            <FormButton iconStart={MagnifyingGlassIcon} />
+                        </FormControl>
                     </div>
                 </div>
             </Wrapper>

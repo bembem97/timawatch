@@ -1,16 +1,21 @@
-import React, { ComponentPropsWithoutRef, ElementType } from "react"
+"use client"
+import React, { ComponentPropsWithoutRef, ElementType, ReactElement, useState } from "react"
 import { VariantProps } from "tailwind-variants"
 import style from "./style"
 import IconProps from "~/types/interface/icon"
+import { CheckCircleIcon } from "@heroicons/react/20/solid"
 import Icon from "../Icon"
 
 type ChipProps = VariantProps<typeof style> &
     ComponentPropsWithoutRef<keyof JSX.IntrinsicElements> & {
         as?: ElementType
-        iconStart?: IconProps
+        iconStart?: ReactElement<IconProps>
+        label: string
     }
 
-const Chip = ({ children, as, clickable, iconStart, variant, color, ...rest }: ChipProps) => {
+const Chip = ({ label, as, clickable, iconStart, variant, color, ...rest }: ChipProps) => {
+    const [selected, setSelected] = useState(false)
+
     const className = rest.className
     const Component = as ?? "span"
 
@@ -26,9 +31,13 @@ const Chip = ({ children, as, clickable, iconStart, variant, color, ...rest }: C
             tabIndex={focusable}
             data-interactive={clickable}
             className={style({ className, clickable, color, variant })}
+            onClick={() => setSelected(!selected)}
         >
-            {StartIcon && <Icon size="sm" icon={StartIcon} />}
-            {children}
+            {StartIcon && StartIcon}
+
+            {label}
+
+            {clickable && selected && <Icon icon={CheckCircleIcon} size="sm" />}
         </Component>
     )
 }
