@@ -2,13 +2,16 @@ import { Bars3CenterLeftIcon, HeartIcon, UserIcon } from "@heroicons/react/20/so
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import Button from "~/components/interface/Button"
+import Chip from "~/components/interface/Chip"
 import Container from "~/components/interface/Container"
-import Dialog from "~/components/interface/Dialog"
 import Icon from "~/components/interface/Icon"
 import Link from "~/components/interface/Link"
 import Text from "~/components/interface/Text"
 import Accordion from "~/components/test/Accordion"
+import ComboBoxAutoComplete from "~/components/test/ComboBoxAutoComplete"
+import ListBoxSelector from "~/components/test/ListBoxSelector"
 import Modal from "~/components/test/Modal"
+import ModalDrawer from "~/components/test/ModalDrawer"
 
 export const metadata: Metadata = {
     title: "Components UI",
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ComponentsUI() {
     return (
-        <main className="p-4 grid grid-cols-1 gap-y-4">
+        <Container as="main" className="p-4 grid grid-cols-1 gap-y-4">
             <Wrapper title="Typography">
                 <Text variant="h1">Heading 1</Text>
                 <Text variant="h2">Heading 2</Text>
@@ -113,6 +116,10 @@ export default function ComponentsUI() {
                 <Modal />
             </Wrapper>
 
+            <Wrapper title="Drawer">
+                <ModalDrawer />
+            </Wrapper>
+
             <Wrapper title="Accordion">
                 <Accordion />
             </Wrapper>
@@ -126,7 +133,52 @@ export default function ComponentsUI() {
                     </Text>
                 </Container>
             </Wrapper>
-        </main>
+
+            <Wrapper title="Listbox">
+                <ListBoxSelector />
+            </Wrapper>
+
+            <Wrapper title="ComboBox">
+                <ComboBoxAutoComplete />
+            </Wrapper>
+
+            <Wrapper title="Chip">
+                <div className="flex gap-x-4">
+                    <div className="flex flex-col gap-y-2">
+                        <Text variant="caption">Non-interactive</Text>
+
+                        <Chip variant="filled" color="default">
+                            Chip Label
+                        </Chip>
+                        <Chip variant="outlined" color="default">
+                            Chip Label
+                        </Chip>
+                        <Chip variant="filled" color="accent">
+                            Chip Label
+                        </Chip>
+                        <Chip variant="outlined" color="accent">
+                            Chip Label
+                        </Chip>
+                    </div>
+                    <div className="flex flex-col gap-y-2">
+                        <Text variant="caption">Clickable</Text>
+
+                        <Chip variant="filled" color="default" clickable>
+                            Chip Label
+                        </Chip>
+                        <Chip variant="outlined" color="default" clickable>
+                            Chip Label
+                        </Chip>
+                        <Chip variant="filled" color="accent" clickable>
+                            Chip Label
+                        </Chip>
+                        <Chip variant="outlined" color="accent" clickable>
+                            Chip Label
+                        </Chip>
+                    </div>
+                </div>
+            </Wrapper>
+        </Container>
     )
 }
 

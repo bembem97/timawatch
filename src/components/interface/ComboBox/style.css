@@ -1,0 +1,41 @@
+@layer components {
+    .combobox {
+        @apply relative;
+    }
+
+    .combobox__button {
+        @apply relative w-fit shrink rounded-lg bg-background-light hover:bg-background-dark transition-colors duration-100 py-2 px-2 grid place-items-center text-left shadow-md focus:outline-none focus-visible:border-accent-dark focus-visible:ring-2 focus-visible:ring-accent-foreground/75 focus-visible:ring-offset-2 focus-visible:ring-offset-accent-light sm:text-sm;
+    }
+
+    .combobox__button__up-down__icon {
+        @apply pointer-events-none flex items-center;
+    }
+
+    .combobox__input {
+        @apply w-full border-none grow py-2 pl-3 pr-10 text-sm leading-5 text-foreground bg-inherit focus:bg-background-dark focus:ring-0 focus-visible:outline-transparent rounded;
+    }
+
+    .combobox__textfield {
+        @apply relative w-full p-1 flex gap-x-1 cursor-default overflow-hidden rounded-lg bg-background text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-dark/75 focus-visible:ring-offset-2 focus-visible:ring-offset-accent-light sm:text-sm;
+    }
+
+    .combobox__options {
+        @apply absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-background-dark/5 focus:outline-none sm:text-sm shadow-accent-light/10;
+    }
+
+    .combobox__option {
+        @apply relative cursor-default select-none py-2 pl-10 pr-4 text-foreground-mute;
+
+        &[data-headlessui-state="active"] {
+            @apply bg-background-light text-foreground;
+        }
+    }
+
+    .combobox__option--selected {
+        @apply font-semibold;
+    }
+
+    .combobox__option--checked {
+        @apply absolute inset-y-0 left-0 flex items-center pl-3 text-accent-light;
+    }
+}

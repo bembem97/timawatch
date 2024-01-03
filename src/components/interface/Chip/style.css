@@ -1,0 +1,21 @@
+@layer components {
+    .chip {
+        @apply select-none rounded-full px-2 py-1 flex items-center justify-center gap-x-0.5 transition-colors duration-100 w-fit;
+    }
+
+    .chip__filled--default {
+        @apply bg-foreground text-background-dark;
+    }
+
+    .chip__outlined--default {
+        @apply text-foreground border border-current;
+    }
+
+    .chip__filled--accent {
+        @apply bg-accent-light text-background;
+    }
+
+    .chip__outlined--accent {
+        @apply text-accent-light border border-current;
+    }
+}

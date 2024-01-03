@@ -1,0 +1,13 @@
+@layer components {
+    .drawer {
+        @apply fixed inset-0 z-modal grid grid-rows-1 grid-cols-1 gap-4;
+    }
+
+    .drawer__overlay {
+        @apply bg-black/60 absolute inset-0;
+    }
+
+    .drawer__panel {
+        @apply bg-background-light grid grid-cols-1 grid-rows-[max-content_1fr] rounded-tr-xl max-w-80 w-full justify-self-start;
+    }
+}
