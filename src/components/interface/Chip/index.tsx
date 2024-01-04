@@ -13,7 +13,7 @@ type ChipProps = VariantProps<typeof style> &
         label: string
     }
 
-const Chip = ({ label, as, clickable, iconStart, variant, color, ...rest }: ChipProps) => {
+const Chip = ({ label, as, clickable, iconStart, variant, color, size, ...rest }: ChipProps) => {
     const [selected, setSelected] = useState(false)
 
     const className = rest.className
@@ -30,14 +30,14 @@ const Chip = ({ label, as, clickable, iconStart, variant, color, ...rest }: Chip
             role={roleButton}
             tabIndex={focusable}
             data-interactive={clickable}
-            className={style({ className, clickable, color, variant })}
+            className={style({ className, clickable, color, variant, size })}
             onClick={() => setSelected(!selected)}
         >
             {StartIcon && StartIcon}
 
             {label}
 
-            {clickable && selected && <Icon icon={CheckCircleIcon} size="sm" />}
+            {clickable && selected && <Icon icon={CheckCircleIcon} size={size} />}
         </Component>
     )
 }

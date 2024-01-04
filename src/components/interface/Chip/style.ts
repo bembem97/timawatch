@@ -1,8 +1,7 @@
 import { tv } from "tailwind-variants"
-import textStyle from "../Text/style"
 
 const chipStyle = tv({
-    base: ["chip", textStyle({ variant: "caption" })],
+    base: ["chip"],
     variants: {
         clickable: {
             true: "cursor-pointer",
@@ -14,6 +13,10 @@ const chipStyle = tv({
         variant: {
             filled: "",
             outlined: "",
+        },
+        size: {
+            xs: "chip--xs",
+            sm: "chip--sm",
         },
     },
     compoundVariants: [
@@ -41,6 +44,7 @@ const chipStyle = tv({
     defaultVariants: {
         color: "default",
         variant: "filled",
+        size: "sm",
     },
 })
 

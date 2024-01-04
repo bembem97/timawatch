@@ -5,6 +5,7 @@
 @import "../styles/components/3d.css";
 @import "../styles/components/layout.css";
 @import "../components/interface/Button/style.css";
+@import "../components/interface/Card/style.css";
 @import "../components/interface/Chip/style.css";
 @import "../components/interface/Container/style.css";
 @import "../components/interface/ComboBox/style.css";

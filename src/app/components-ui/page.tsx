@@ -8,6 +8,10 @@ import {
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import Button from "~/components/interface/Button"
+import Card from "~/components/interface/Card"
+import CardAction from "~/components/interface/Card/CardAction"
+import CardBody from "~/components/interface/Card/CardBody"
+import CardMedia from "~/components/interface/Card/CardMedia"
 import Chip from "~/components/interface/Chip"
 import Container from "~/components/interface/Container"
 import Icon from "~/components/interface/Icon"
@@ -207,6 +211,52 @@ export default function ComponentsUI() {
                             label="Chip Label"
                         />
                     </div>
+                    <div className="flex flex-col gap-y-2">
+                        <Text variant="caption">Small Chip</Text>
+
+                        <Chip variant="filled" color="default" label="Chip Label" size="xs" />
+
+                        <Chip variant="outlined" color="default" label="Chip Label" size="xs" />
+
+                        <Chip variant="filled" color="accent" label="Chip Label" size="xs" />
+
+                        <Chip variant="outlined" color="accent" label="Chip Label" size="xs" />
+                    </div>
+                    <div className="flex flex-col gap-y-2">
+                        <Text variant="caption">Small Chip With Icon</Text>
+
+                        <Chip
+                            variant="filled"
+                            color="default"
+                            label="Chip Label"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+
+                        <Chip
+                            variant="outlined"
+                            color="default"
+                            label="Chip Label"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+
+                        <Chip
+                            variant="filled"
+                            color="accent"
+                            label="Chip Label"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+
+                        <Chip
+                            variant="outlined"
+                            color="accent"
+                            label="Chip Label"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+                    </div>
                 </div>
             </Wrapper>
 
@@ -221,6 +271,80 @@ export default function ComponentsUI() {
                         </FormControl>
                     </div>
                 </div>
+            </Wrapper>
+
+            <Wrapper title="Cards">
+                <Card>
+                    <CardAction href="/">
+                        <CardMedia src="/image/arcane_poster.jpg" width="600" height="900" alt="Poster" />
+                    </CardAction>
+
+                    <CardBody>
+                        <Text variant="h4">Card Title</Text>
+                        <Text className="text-foreground-mute">Subtext</Text>
+                    </CardBody>
+                </Card>
+
+                <Card layout="landscape">
+                    <CardAction href="/">
+                        <CardMedia src="/image/arcane_poster.jpg" width="100" height="150" alt="Poster" />
+                    </CardAction>
+                    <CardBody>
+                        <div className="flex gap-x-1">
+                            <Text variant="h4">Card Title</Text>
+                            <Text className="text-foreground-mute">(Subtext)</Text>
+                        </div>
+                        <Chip
+                            label="8.7"
+                            color="accent"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+                    </CardBody>
+                </Card>
+
+                <Card layout="landscape" data-card-size="bigger" className="w-full">
+                    <CardAction href="/">
+                        <CardMedia src="/image/arcane_poster.jpg" width="100" height="150" alt="Poster" />
+                    </CardAction>
+                    <CardBody>
+                        <div className="flex gap-x-1">
+                            <Text variant="h4">Card Title</Text>
+                            <Text className="text-foreground-mute">(Subtext)</Text>
+                        </div>
+                        <Chip
+                            label="8.7"
+                            color="accent"
+                            size="xs"
+                            iconStart={<Icon size="xs" icon={StarIcon} />}
+                        />
+                        <Text className="line-clamp-2">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et temporibus itaque vel
+                            quae laudantium, debitis veritatis rem enim consectetur expedita vitae eaque
+                            deserunt ipsa perspiciatis in ratione repellendus. Labore, nesciunt.
+                        </Text>
+                    </CardBody>
+                </Card>
+
+                <Link href="/" className="duration-100 transition-colors hover:bg-background-dark p-1">
+                    <Card layout="landscape">
+                        <CardAction href="/">
+                            <CardMedia src="/image/arcane_poster.jpg" width="100" height="150" alt="Poster" />
+                        </CardAction>
+                        <CardBody>
+                            <div className="flex gap-x-1">
+                                <Text variant="h4">Card Title</Text>
+                                <Text className="text-foreground-mute">(Subtext)</Text>
+                            </div>
+                            <Chip
+                                label="8.7"
+                                color="accent"
+                                size="xs"
+                                iconStart={<Icon size="xs" icon={StarIcon} />}
+                            />
+                        </CardBody>
+                    </Card>
+                </Link>
             </Wrapper>
         </Container>
     )

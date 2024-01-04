@@ -1,6 +1,14 @@
 @layer components {
     .chip {
-        @apply select-none rounded-full px-2 py-1 flex items-center justify-center gap-x-0.5 transition-colors duration-100 w-fit;
+        @apply select-none rounded-full flex items-center justify-center gap-x-0.5 transition-colors font-bold duration-100 w-fit;
+    }
+
+    .chip--sm {
+        @apply text-xs tracking-wider px-2 py-1;
+    }
+
+    .chip--xs {
+        @apply text-[10px] tracking-widest px-1 py-0.5;
     }
 
     .chip__filled--default {
