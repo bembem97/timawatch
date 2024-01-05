@@ -60,7 +60,7 @@ export default function useCarousel(ref: RefProps) {
         window.addEventListener("resize", onResizeCb)
 
         return () => window.removeEventListener("resize", onResizeCb)
-    }, [setScroll, onScrollCb])
+    }, [ref, setScroll, onScrollCb])
 
     useEffect(() => {
         const target = ref.current

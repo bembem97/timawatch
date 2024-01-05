@@ -1,6 +1,7 @@
 import {
     Bars3CenterLeftIcon,
     HeartIcon,
+    HomeIcon,
     MagnifyingGlassIcon,
     StarIcon,
     UserIcon,
@@ -16,6 +17,7 @@ import Chip from "~/components/interface/Chip"
 import Container from "~/components/interface/Container"
 import Icon from "~/components/interface/Icon"
 import Link from "~/components/interface/Link"
+import List, { ListItem, ListItemButton, ListItemIcon, ListItemText } from "~/components/interface/List"
 import Text from "~/components/interface/Text"
 import TextField from "~/components/interface/TextField"
 import FormButton from "~/components/interface/TextField/FormButton"
@@ -330,6 +332,55 @@ export default function ComponentsUI() {
 
             <Wrapper title="Carousel">
                 <MovieCarousel heading="Movie" />
+            </Wrapper>
+
+            <Wrapper title="List">
+                <div className="flex flex-wrap gap-x-4 w-full">
+                    <List className="basis-60">
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemText>Item 1</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemText>Item 2</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemText>Item 3</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+
+                    <List className="basis-60">
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <Icon icon={HomeIcon} />
+                                </ListItemIcon>
+                                <ListItemText>Item 1</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <Icon icon={HomeIcon} />
+                                </ListItemIcon>
+                                <ListItemText>Item 2</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem className="bg-background">
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <Icon icon={HomeIcon} />
+                                </ListItemIcon>
+                                <ListItemText>Item 3</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+                </div>
             </Wrapper>
         </Container>
     )
