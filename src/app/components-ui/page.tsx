@@ -26,6 +26,7 @@ import ComboBoxAutoComplete from "~/components/test/ComboBoxAutoComplete"
 import ListBoxSelector from "~/components/test/ListBoxSelector"
 import Modal from "~/components/test/Modal"
 import ModalDrawer from "~/components/test/ModalDrawer"
+import MovieCarousel from "~/components/test/MovieCarousel"
 
 export const metadata: Metadata = {
     title: "Components UI",
@@ -325,26 +326,10 @@ export default function ComponentsUI() {
                         </Text>
                     </CardBody>
                 </Card>
+            </Wrapper>
 
-                <Link href="/" className="duration-100 transition-colors hover:bg-background-dark p-1">
-                    <Card layout="landscape">
-                        <CardAction href="/">
-                            <CardMedia src="/image/arcane_poster.jpg" width="100" height="150" alt="Poster" />
-                        </CardAction>
-                        <CardBody>
-                            <div className="flex gap-x-1">
-                                <Text variant="h4">Card Title</Text>
-                                <Text className="text-foreground-mute">(Subtext)</Text>
-                            </div>
-                            <Chip
-                                label="8.7"
-                                color="accent"
-                                size="xs"
-                                iconStart={<Icon size="xs" icon={StarIcon} />}
-                            />
-                        </CardBody>
-                    </Card>
-                </Link>
+            <Wrapper title="Carousel">
+                <MovieCarousel heading="Movie" />
             </Wrapper>
         </Container>
     )

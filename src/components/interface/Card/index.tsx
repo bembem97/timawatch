@@ -1,6 +1,9 @@
 import React, { ComponentPropsWithoutRef, ElementType } from "react"
 import style from "./style"
 import { VariantProps } from "tailwind-variants"
+import CardAction from "./CardAction"
+import CardBody from "./CardBody"
+import CardMedia from "./CardMedia"
 
 const { base } = style()
 
@@ -21,3 +24,4 @@ const Card = ({ children, as, layout, ...rest }: CardProps) => {
 }
 
 export default Card
+export { CardAction, CardBody, CardMedia }

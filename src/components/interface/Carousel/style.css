@@ -1,0 +1,31 @@
+@layer components {
+    .carousel {
+        @apply grid gap-x-2.5 gap-y-4 w-full basis-full;
+        grid-template-columns: max-content 1fr repeat(2, theme(spacing.9));
+        grid-template-rows: max-content minmax(310px, 1fr);
+        grid-template-areas:
+            "title . prev next"
+            "slide slide slide slide";
+
+        & > .carousel__title {
+            grid-area: title;
+        }
+        & > .carousel__button--prev {
+            grid-area: prev;
+        }
+        & > .carousel__button--next {
+            grid-area: next;
+        }
+        & > .carousel__frame {
+            grid-area: slide;
+        }
+    }
+
+    .carousel__frame {
+        @apply overflow-auto flex gap-x-4 snap-none scroll-p-4 p-4;
+
+        & > * {
+            @apply snap-center;
+        }
+    }
+}
