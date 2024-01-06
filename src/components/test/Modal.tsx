@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import Dialog, { DialogOverlay, DialogPanel } from "../interface/Dialog"
 import Button from "../interface/Button"
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"
-import Container from "../interface/Container"
+import Container from "../interface/ContainerBox"
 import Text from "../interface/Text"
 
 const Modal = () => {

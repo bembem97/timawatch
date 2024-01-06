@@ -1,11 +1,11 @@
 import React, { ComponentPropsWithoutRef, ElementType } from "react"
 import style from "./style"
 
-type ContainerProps = ComponentPropsWithoutRef<keyof JSX.IntrinsicElements> & {
+type ContainerBoxProps = ComponentPropsWithoutRef<keyof JSX.IntrinsicElements> & {
     as?: ElementType
 }
 
-const Container = ({ children, as, ...rest }: ContainerProps) => {
+const ContainerBox = ({ children, as, ...rest }: ContainerBoxProps) => {
     const Component = as ?? "div"
     const className = rest.className
 
@@ -16,4 +16,4 @@ const Container = ({ children, as, ...rest }: ContainerProps) => {
     )
 }
 
-export default Container
+export default ContainerBox

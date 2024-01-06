@@ -1,5 +1,5 @@
 import { tv } from "tailwind-variants"
-import containerStyle from "../Container/style"
+import containerStyle from "../ContainerBox/style"
 
 const appBarStyle = tv({
     slots: {

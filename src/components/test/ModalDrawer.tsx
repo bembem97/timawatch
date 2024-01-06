@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import Drawer, { DrawerOverlay, DrawerPanel } from "../interface/Drawer"
 import Button from "../interface/Button"
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"
-import Container from "../interface/Container"
+import Container from "../interface/ContainerBox"
 import Text from "../interface/Text"
 
 const ModalDrawer = () => {

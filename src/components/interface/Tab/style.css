@@ -1,0 +1,25 @@
+@layer components {
+    .tab {
+        @apply w-full rounded-lg py-2.5 text-sm font-medium leading-5 ring-accent-foreground/60 ring-offset-2 ring-offset-accent-dark focus:outline-none focus:ring-2 bg-background-light;
+    }
+
+    .tab--selected {
+        @apply bg-background-dark text-accent-light shadow;
+    }
+
+    .tab__list {
+        @apply flex space-x-1 rounded-xl bg-background p-1;
+    }
+
+    .tab__panels {
+        @apply mt-2;
+    }
+
+    .tab__panel {
+        @apply rounded-xl bg-background p-3 ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2;
+    }
+
+    .tab__container {
+        @apply px-2 sm:px-0;
+    }
+}

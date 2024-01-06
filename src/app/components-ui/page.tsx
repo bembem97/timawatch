@@ -14,7 +14,7 @@ import CardAction from "~/components/interface/Card/CardAction"
 import CardBody from "~/components/interface/Card/CardBody"
 import CardMedia from "~/components/interface/Card/CardMedia"
 import Chip from "~/components/interface/Chip"
-import Container from "~/components/interface/Container"
+import Container from "~/components/interface/ContainerBox"
 import Icon from "~/components/interface/Icon"
 import Link from "~/components/interface/Link"
 import List, { ListItem, ListItemButton, ListItemIcon, ListItemText } from "~/components/interface/List"
@@ -30,6 +30,7 @@ import MenuSample from "~/components/test/MenuSample"
 import Modal from "~/components/test/Modal"
 import ModalDrawer from "~/components/test/ModalDrawer"
 import MovieCarousel from "~/components/test/MovieCarousel"
+import TabSample from "~/components/test/TabSample"
 
 export const metadata: Metadata = {
     title: "Components UI",
@@ -331,6 +332,12 @@ export default function ComponentsUI() {
                 </Card>
             </Wrapper>
 
+            <Wrapper title="Menu">
+                <div>
+                    <MenuSample />
+                </div>
+            </Wrapper>
+
             <Wrapper title="Carousel">
                 <MovieCarousel heading="Movie" />
             </Wrapper>
@@ -384,10 +391,8 @@ export default function ComponentsUI() {
                 </div>
             </Wrapper>
 
-            <Wrapper title="Menu">
-                <div>
-                    <MenuSample />
-                </div>
+            <Wrapper title="Tab">
+                <TabSample />
             </Wrapper>
         </Container>
     )
