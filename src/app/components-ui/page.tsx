@@ -26,6 +26,7 @@ import Input from "~/components/interface/TextField/Input"
 import Accordion from "~/components/test/Accordion"
 import ComboBoxAutoComplete from "~/components/test/ComboBoxAutoComplete"
 import ListBoxSelector from "~/components/test/ListBoxSelector"
+import MenuSample from "~/components/test/MenuSample"
 import Modal from "~/components/test/Modal"
 import ModalDrawer from "~/components/test/ModalDrawer"
 import MovieCarousel from "~/components/test/MovieCarousel"
@@ -380,6 +381,12 @@ export default function ComponentsUI() {
                             </ListItemButton>
                         </ListItem>
                     </List>
+                </div>
+            </Wrapper>
+
+            <Wrapper title="Menu">
+                <div>
+                    <MenuSample />
                 </div>
             </Wrapper>
         </Container>

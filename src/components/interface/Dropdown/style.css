@@ -1,0 +1,28 @@
+@layer components {
+    .dropdown {
+        @apply relative;
+
+        &[data-headlessui-state="open"] {
+            & > button {
+                @apply bg-foreground/5;
+
+                &::before {
+                    content: "";
+                    @apply absolute inset-x-1/2 -translate-x-1/2 border-t-0;
+                    top: 79%;
+                    border: 8px solid transparent;
+                    border-bottom-color: theme(colors.background.DEFAULT);
+                }
+            }
+        }
+    }
+
+    .dropdown__items {
+        @apply absolute right-0 w-max bg-background rounded-lg shadow shadow-accent-light/5;
+        top: calc(100% + 8px);
+    }
+
+    .dropdown__button {
+        @apply relative;
+    }
+}
