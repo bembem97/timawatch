@@ -14,7 +14,7 @@
         margin-inline: auto;
     }
 
-    html {
+    body {
         @apply text-foreground bg-background;
     }
 }

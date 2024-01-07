@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithRef, ComponentPropsWithoutRef, MutableRefObject } from "react"
+import React, { ComponentPropsWithRef, ComponentPropsWithoutRef } from "react"
 import style from "./style"
 import Button from "../Button"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"

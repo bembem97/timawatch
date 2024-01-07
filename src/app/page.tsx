@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import ContainerBox from "~/components/interface/ContainerBox"
 import Text from "~/components/interface/Text"
 
 export const metadata: Metadata = {
@@ -7,12 +8,68 @@ export const metadata: Metadata = {
 
 export default function Home() {
     return (
-        <main>
-            <Text variant="h2" color="mute">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus dolorem nemo sint
-                fugiat sed magni totam alias at. Expedita minima neque molestias est consequatur accusamus
-                tempore, aliquid laboriosam?
-            </Text>
+        <main className="item-main">
+            <ContainerBox>
+                <Text color="mute">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus dolorem nemo
+                    sint fugiat sed magni totam alias at. Expedita minima neque molestias est consequatur
+                    accusamus tempore, aliquid laboriosam? Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at. Expedita minima
+                    neque molestias est consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor
+                    sit amet consectetur adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed
+                    magni totam alias at. Expedita minima neque molestias est consequatur accusamus tempore,
+                    aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste
+                    delectus dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque
+                    molestias est consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit
+                    amet consectetur adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni
+                    totam alias at. Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid
+                    laboriosam?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut iste delectus
+                    dolorem nemo sint fugiat sed magni totam alias at. Expedita minima neque molestias est
+                    consequatur accusamus tempore, aliquid laboriosam?Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Aut iste delectus dolorem nemo sint fugiat sed magni totam alias at.
+                    Expedita minima neque molestias est consequatur accusamus tempore, aliquid laboriosam?
+                </Text>
+            </ContainerBox>
         </main>
     )
 }

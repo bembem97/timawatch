@@ -1,6 +1,11 @@
 @layer components {
     .drawer {
-        @apply fixed inset-0 z-modal grid grid-rows-1 grid-cols-1 gap-4;
+        @apply fixed inset-0 z-modal grid gap-4 h-screen overflow-y-auto overflow-x-hidden;
+        grid-template-areas: "all";
+
+        & > * {
+            grid-area: all;
+        }
     }
 
     .drawer__overlay {

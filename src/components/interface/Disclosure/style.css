@@ -1,6 +1,6 @@
 @layer components {
     .disclosure__button {
-        @apply grid items-center gap-x-1;
+        @apply grid items-center gap-x-1 py-2;
         grid-template-columns: auto max-content 1fr;
         grid-template-areas: "i1 . i2";
 
@@ -10,6 +10,23 @@
         & > svg.i2 {
             grid-area: i2;
             justify-self: end;
+        }
+
+        & > .disclosure__button__chevron {
+            @apply transition-transform duration-100;
+        }
+    }
+
+    .disclosure[data-headlessui-state="open"] .disclosure__button__chevron {
+        @apply rotate-90;
+    }
+
+    .menu__accordion {
+        @apply transition-colors duration-100 border-l-4 border-transparent pr-2 4xl:pr-0;
+
+        &--selected,
+        .disclosure[data-headlessui-state="open"] > & {
+            @apply border-accent-light bg-foreground/5;
         }
     }
 }
