@@ -15,7 +15,7 @@
             grid-template:
                 "n h" var(--header)
                 "n m" var(--main)
-                "f f" var(--footer) / 280px 1fr;
+                "n f" var(--footer) / 280px 1fr;
         }
 
         & > .item-header {

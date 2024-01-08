@@ -17,7 +17,7 @@ const NavMenu = () => {
         <>
             {menuData.map(({ id, label, Icon, status }) => (
                 <Disclosure key={id} className="disclosure">
-                    <div className="pl-4 menu__accordion hover:menu__accordion--selected">
+                    <div className="pl-4 menu__accordion with-hover:hover:menu__accordion--selected">
                         <DisclosureButton iconStart={Icon} className="w-full">
                             {label}
                         </DisclosureButton>
@@ -30,9 +30,7 @@ const NavMenu = () => {
                                     <ListItem as="div" key={id}>
                                         <ListItemButton as={Link} href={pathname}>
                                             <ListItemText>
-                                                <Text className="text-foreground-mute">
-                                                    {label}
-                                                </Text>
+                                                <Text className="text-foreground-mute">{label}</Text>
                                             </ListItemText>
                                         </ListItemButton>
                                     </ListItem>

@@ -22,7 +22,7 @@
     }
 
     .carousel__frame {
-        @apply overflow-auto flex gap-x-4 snap-none scroll-p-4 p-4;
+        @apply overflow-auto flex gap-x-4 snap-none scroll-p-4;
 
         & > * {
             @apply snap-center;

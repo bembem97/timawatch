@@ -11,28 +11,24 @@
         @apply block relative rounded-xl overflow-hidden;
 
         &::before {
-            content: "";
             @apply absolute inset-0 z-20 rounded-[inherit];
-            box-shadow: inset 2px 2px 1px 1px theme(colors.foreground.DEFAULT / 0.12),
-                inset -2px -2px 1px 1px theme(colors.background.DEFAULT / 0.22);
-            background-image: radial-gradient(
-                theme(colors.foreground.DEFAULT / 0.08),
-                theme(colors.foreground.DEFAULT / 0.15)
-            );
+            content: "";
+            box-shadow: theme(boxShadow.glass);
+            background-image: theme(backgroundImage.glass);
         }
 
         &::after {
-            @apply absolute -translate-x-full inset-0 transition-transform duration-500;
+            @apply absolute -translate-x-full inset-0;
             content: "";
             background-image: linear-gradient(
                 to right,
                 transparent 33%,
-                theme(colors.foreground.DEFAULT / 0.6) 66%,
+                theme(colors.foreground.DEFAULT / 0.17) 66%,
                 transparent
             );
         }
         &:hover::after {
-            @apply translate-x-full;
+            @apply translate-x-full transition-transform duration-500;
         }
 
         &:hover .card__media {

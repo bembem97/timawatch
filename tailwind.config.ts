@@ -3,6 +3,7 @@ import { BREAKPOINTS } from "./src/constants/misc"
 import container from "@tailwindcss/container-queries"
 import ui from "@headlessui/tailwindcss"
 import color from "tailwindcss/colors"
+import plugin from "tailwindcss/plugin"
 
 const config: Config = {
     content: [
@@ -51,12 +52,19 @@ const config: Config = {
                 },
             },
             boxShadow: {
-                glass: "inset 1px 1px 1px 2px hsl(0 50% 99% / 0.06), inset -1px -1px 1px 2px hsl(0 50% 1% / 0.16)",
-                "elevated-glass":
-                    "inset 1px 1px 1px 2px hsl(0 50% 99% / 0.06), inset -1px -1px 1px 2px hsl(0 50% 1% / 0.16), 0 2px 2px 1px hsl(0 50% 1% / 0.35)",
+                glass: "inset 2px 2px 1px 1px rgb(250 250 250 / 0.04), inset -2px -2px 1px 1px rgb(23 23 23 / 0.16)",
+            },
+            backgroundImage: {
+                glass: "radial-gradient(rgb(250 250 250 / 0.15), rgb(250 250 250 / 0.08))",
             },
         },
     },
-    plugins: [ui, container],
+    plugins: [
+        ui,
+        container,
+        plugin(({ addVariant }) => {
+            addVariant("with-hover", "@media (hover: hover)")
+        }),
+    ],
 }
 export default config

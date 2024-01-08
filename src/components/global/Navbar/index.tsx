@@ -16,8 +16,10 @@ const Navbar = () => {
 
                 <Logo className="[grid-area:l] flex 4xl:hidden" />
 
-                <SearchBar className="[grid-area:s] hidden 4xl:block" />
-                <SearchDialog className="[grid-area:s] flex 4xl:hidden" />
+                <div className="[grid-area:s] flex items-center 4xl:ml-auto">
+                    <SearchBar className="hidden 4xl:block" />
+                    <SearchDialog className="flex 4xl:hidden" />
+                </div>
             </ContainerBox>
         </header>
     )
