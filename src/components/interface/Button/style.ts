@@ -13,7 +13,7 @@ const buttonStyle = tv({
             accent: "",
         },
         size: {
-            sm: "h-7",
+            sm: "h-6",
             md: "h-8",
         },
     },

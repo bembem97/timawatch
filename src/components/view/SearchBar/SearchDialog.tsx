@@ -21,15 +21,12 @@ const SearchDialog = ({ ...rest }: SearchDialogProps) => {
 
             <Dialog show={isOpen} onClose={closeHandler}>
                 <DialogOverlay />
-                <DialogPanel onClose={closeHandler}>
-                    <ContainerBox>
-                        <SearchBar className="grid" />
-
-                        <Text>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, animi dolorem
-                            optio voluptatum consectetur minus voluptate quidem architecto deleniti earum
-                            officiis iure nam? Dolorem consequatur nemo a quisquam perspiciatis saepe?
-                        </Text>
+                <DialogPanel
+                    onClose={closeHandler}
+                    outerPanelProps={{ className: "w-[clamp(350px,90vw,900px)] aspect-portrait" }}
+                >
+                    <ContainerBox className="grid grid-rows-1 grid-cols-1 pb-2">
+                        <SearchBar className="grid grid-cols-1 grid-rows-[max-content_1fr] gap-y-2" />
                     </ContainerBox>
                 </DialogPanel>
             </Dialog>

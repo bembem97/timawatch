@@ -57,6 +57,7 @@ const HomeBanner = ({ data }: HomeBannerProps) => {
                 <Text as="h2" variant="h2">
                     {title} ({year})
                 </Text>
+
                 <div className="flex flex-wrap items-center gap-x-2">
                     <Chip
                         label={Number(vote_average).toFixed(1)}
@@ -74,7 +75,7 @@ const HomeBanner = ({ data }: HomeBannerProps) => {
                     {genres.map((genre) => (
                         <Text
                             key={genre.id}
-                            className={String.raw`text-foreground-mute [&:not(:last-of-type)]:after:content-['\00a0|_'] flex items-center`}
+                            className={String.raw`text-foreground-mute [&:not(:last-of-type)]:after:content-['\00a0|\00a0'] flex items-center`}
                         >
                             {genre.name}
                         </Text>
@@ -82,7 +83,7 @@ const HomeBanner = ({ data }: HomeBannerProps) => {
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    <WatchVideo />
+                    <WatchVideo mediaId={id} mediaType="movie" variant="filled" color="accent" />
                     <Button iconStart={BookmarkIcon} />
                     <Button iconStart={HeartIcon} />
                 </div>

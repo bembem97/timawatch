@@ -3,8 +3,8 @@
         @apply fixed inset-0 z-modal grid place-items-center gap-4;
         grid-template:
             ". . ." 1fr
-            ". m ." minmax(0px, 315px)
-            ". . ." 1fr / 1fr minmax(0px, 650px) 1fr;
+            ". m ." minmax(100px, max-content)
+            ". . ." 1fr / 1fr minmax(100px, max-content) 1fr;
     }
 
     .dialog__overlay {

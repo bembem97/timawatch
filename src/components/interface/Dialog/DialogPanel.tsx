@@ -8,10 +8,12 @@ const { panel, closeButton, outerPanel } = style()
 
 type DialogPanelProps = ComponentPropsWithoutRef<"div"> & {
     onClose: () => void
+    outerPanelProps?: ComponentPropsWithoutRef<"div">
 }
 
-const DialogPanel = ({ children, onClose, ...rest }: DialogPanelProps) => {
+const DialogPanel = ({ children, onClose, outerPanelProps, ...rest }: DialogPanelProps) => {
     const className = rest.className
+    const opClassName = outerPanelProps?.className
 
     return (
         <Transition.Child
@@ -22,7 +24,7 @@ const DialogPanel = ({ children, onClose, ...rest }: DialogPanelProps) => {
             leave="transition-opacity duration-500 ease-out"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            className={outerPanel()}
+            className={outerPanel({ className: opClassName })}
         >
             <Transition.Child
                 as={Fragment}

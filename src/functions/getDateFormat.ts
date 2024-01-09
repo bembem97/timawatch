@@ -35,6 +35,6 @@ export default function getDateFormat(
         (format.dateFormat === "year-only" && yearOnly) ||
         format.options
 
-    let formatter = new Intl.DateTimeFormat(undefined, formatOptions)
+    let formatter = new Intl.DateTimeFormat("en-US", formatOptions)
     return formatter.format(dateObj)
 }

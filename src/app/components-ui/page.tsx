@@ -292,7 +292,13 @@ export default function ComponentsUI() {
 
                 <Card layout="landscape">
                     <CardAction href="/">
-                        <CardMedia src="/image/arcane_poster.jpg" width="100" height="150" alt="Poster" />
+                        <CardMedia
+                            src="/image/arcane_poster.jpg"
+                            width="100"
+                            height="150"
+                            alt="Poster"
+                            className="aspect-square object-cover"
+                        />
                     </CardAction>
                     <CardBody>
                         <div className="flex gap-x-1">

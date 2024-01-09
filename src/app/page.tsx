@@ -17,8 +17,8 @@ export default async function Home() {
             <main className="item-main flex flex-col gap-y-2">
                 <HomeBanner data={data.banner} />
                 <ContainerBox as="section" role="group">
-                    <MediaCarousel data={data.movie} heading="Trending Movies" />
-                    <MediaCarousel data={data.tv} heading="Trending Tv Shows" />
+                    <MediaCarousel type="movie" data={data.movie} heading="Trending Movies" />
+                    <MediaCarousel type="tv" data={data.tv} heading="Trending Tv Shows" />
                     <PersonCarousel data={data.person} heading="Trending Celebrities" />
                 </ContainerBox>
             </main>
