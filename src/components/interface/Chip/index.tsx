@@ -10,7 +10,7 @@ type ChipProps = VariantProps<typeof style> &
     ComponentPropsWithoutRef<keyof JSX.IntrinsicElements> & {
         as?: ElementType
         iconStart?: ReactElement<IconProps>
-        label: string
+        label: string | number
     }
 
 const Chip = ({ label, as, clickable, iconStart, variant, color, size, ...rest }: ChipProps) => {

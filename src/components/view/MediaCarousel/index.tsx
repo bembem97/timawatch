@@ -40,7 +40,7 @@ function MediaDataFulfilled({ data, heading }: { data: MediaPosterProps[]; headi
 
                     return (
                         <Card key={id} className="basis-36 shrink-0 grow-0">
-                            <CardAction href="/">
+                            <CardAction href="/" title={TITLE}>
                                 <CardMedia
                                     width={600}
                                     height={900}

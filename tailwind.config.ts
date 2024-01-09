@@ -50,6 +50,10 @@ const config: Config = {
                     light: color.yellow[500],
                     foreground: color.yellow[50],
                 },
+                danger: {
+                    background: color.red[900],
+                    foreground: color.red[200],
+                },
             },
             boxShadow: {
                 glass: "inset 2px 2px 1px 1px rgb(250 250 250 / 0.04), inset -2px -2px 1px 1px rgb(23 23 23 / 0.16)",

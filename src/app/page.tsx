@@ -14,7 +14,7 @@ export default async function Home() {
 
     return (
         <>
-            <main className="item-main flex flex-col gap-y-2 py-2">
+            <main className="item-main flex flex-col gap-y-2">
                 <HomeBanner data={data.banner} />
                 <ContainerBox as="section" role="group">
                     <MediaCarousel data={data.movie} heading="Trending Movies" />

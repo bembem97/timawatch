@@ -11,7 +11,7 @@
             "f" var(--footer) / minmax(0, 1fr);
 
         @media (min-width: theme("screens.4xl")) {
-            @apply gap-x-2 gap-y-2;
+            @apply gap-x-2;
             grid-template:
                 "n h" var(--header)
                 "n m" var(--main)

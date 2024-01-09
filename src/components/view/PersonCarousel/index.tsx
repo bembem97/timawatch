@@ -36,21 +36,21 @@ function PersonDataFulfilled({ data, heading }: { data: PersonPosterProps[]; hea
 
             <CarouselSlide ref={ref} className="bg-background">
                 {data.map(({ id, name, profile_path }) => {
-                    const TITLE = name || "unknown"
+                    const NAME = name || "unknown"
 
                     return (
                         <Card key={id} className="basis-36 shrink-0 grow-0">
-                            <CardAction href="/">
+                            <CardAction href="/" title={NAME}>
                                 <CardMedia
                                     width={600}
                                     height={900}
-                                    alt={TITLE}
+                                    alt={NAME}
                                     src={`${IMAGE_URL}w500${profile_path}`}
                                 />
                             </CardAction>
                             <CardBody>
                                 <Text variant="h4" className="line-clamp-1">
-                                    {TITLE}
+                                    {NAME}
                                 </Text>
                             </CardBody>
                         </Card>

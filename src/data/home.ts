@@ -36,16 +36,29 @@ const homeData = async () => {
 
         movieDetails = await fetch(url(id))
             .then((res) => res.json())
-            .then(({ backdrop_path, genres, id, release_date, runtime, tagline, title, vote_average }) => ({
-                backdrop_path,
-                genres,
-                id,
-                release_date,
-                runtime,
-                tagline,
-                title,
-                vote_average,
-            }))
+            .then(
+                ({
+                    backdrop_path,
+                    genres,
+                    id,
+                    overview,
+                    release_date,
+                    runtime,
+                    tagline,
+                    title,
+                    vote_average,
+                }) => ({
+                    backdrop_path,
+                    genres,
+                    id,
+                    overview,
+                    release_date,
+                    runtime,
+                    tagline,
+                    title,
+                    vote_average,
+                })
+            )
     }
     // todo: *****
 

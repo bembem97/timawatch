@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className="item-footer">
             <ContainerBox className="h-full">
                 <div className="flex flex-col gap-y-8">
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-2 justify-items-center">
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-6 justify-items-start">
                         {menuData.map(({ id, label, status, Icon: Vector }) => (
                             <div key={id} className="flex flex-col gap-y-3">
                                 <div className="flex items-center gap-x-2">
