@@ -1,12 +1,13 @@
 import React, { ComponentPropsWithoutRef, Fragment } from "react"
 import { Combobox as ComboBoxUI, Transition } from "@headlessui/react"
 import style from "./style"
+import { VariantProps } from "tailwind-variants"
 
 const { options } = style()
 
-type ComboBoxOptionsProps = ComponentPropsWithoutRef<typeof ComboBoxUI.Options>
+type ComboBoxOptionsProps = VariantProps<typeof style> & ComponentPropsWithoutRef<typeof ComboBoxUI.Options>
 
-const ComboBoxOptions = ({ children, ...rest }: ComboBoxOptionsProps) => {
+const ComboBoxOptions = ({ children, inComponent, ...rest }: ComboBoxOptionsProps) => {
     const className = rest.className
 
     return (
@@ -19,7 +20,7 @@ const ComboBoxOptions = ({ children, ...rest }: ComboBoxOptionsProps) => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
         >
-            <ComboBoxUI.Options {...rest} className={options({ className })}>
+            <ComboBoxUI.Options {...rest} className={options({ className, inComponent })}>
                 {children}
             </ComboBoxUI.Options>
         </Transition>

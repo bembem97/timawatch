@@ -1,6 +1,6 @@
 @layer components {
     .layout {
-        --header: minmax(3rem, auto);
+        --header: minmax(3.75rem, auto);
         --main: 1fr;
         --footer: minmax(theme(spacing.14), auto);
 

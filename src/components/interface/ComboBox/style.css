@@ -20,7 +20,13 @@
     }
 
     .combobox__options {
-        @apply absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-background-dark/5 focus:outline-none sm:text-sm shadow-accent-light/10;
+        @apply absolute z-10 mt-1 overflow-auto rounded-md w-full bg-background py-1 text-base shadow-lg ring-1 ring-background-dark/5 focus:outline-none sm:text-sm shadow-accent-light/10;
+    }
+    .combobox__options--dropdown {
+        @apply max-h-60;
+    }
+    .combobox__options--modal {
+        @apply h-auto;
     }
 
     .combobox__option {

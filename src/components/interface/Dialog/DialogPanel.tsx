@@ -9,11 +9,13 @@ const { panel, closeButton, outerPanel } = style()
 type DialogPanelProps = ComponentPropsWithoutRef<"div"> & {
     onClose: () => void
     outerPanelProps?: ComponentPropsWithoutRef<"div">
+    closeButtonProps?: ComponentPropsWithoutRef<typeof Button>
 }
 
-const DialogPanel = ({ children, onClose, outerPanelProps, ...rest }: DialogPanelProps) => {
+const DialogPanel = ({ children, onClose, outerPanelProps, closeButtonProps, ...rest }: DialogPanelProps) => {
     const className = rest.className
     const opClassName = outerPanelProps?.className
+    const cbClassName = closeButtonProps?.className
 
     return (
         <Transition.Child
@@ -37,7 +39,11 @@ const DialogPanel = ({ children, onClose, outerPanelProps, ...rest }: DialogPane
             >
                 <DialogUI.Panel {...rest} className={panel({ className })}>
                     <>
-                        <Button iconStart={XMarkIcon} onClick={onClose} className={closeButton()} />
+                        <Button
+                            iconStart={XMarkIcon}
+                            onClick={onClose}
+                            className={closeButton({ className: cbClassName })}
+                        />
                         {children}
                     </>
                 </DialogUI.Panel>

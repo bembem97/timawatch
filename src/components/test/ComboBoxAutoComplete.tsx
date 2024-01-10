@@ -38,7 +38,7 @@ const ComboBoxAutoComplete = () => {
             <ComboBoxTextField>
                 <ComboBoxInput
                     displayValue={(person: any) => person.name}
-                    onChange={(event) => setQuery(event.target.value)}
+                    onChange={(event: any) => setQuery(event.target.value)}
                 />
                 <ComboBoxButton />
             </ComboBoxTextField>

@@ -10,6 +10,7 @@ const navbarStyle = tv({
             "4xl:flex",
             "gap-x-0.5",
             "min-h-12",
+            "h-full",
             "pl-0",
         ],
     },

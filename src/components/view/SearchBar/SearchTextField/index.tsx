@@ -1,18 +1,19 @@
 "use client"
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"
 import React, { ComponentPropsWithoutRef, FormEvent, useState } from "react"
-import FormControl, { FormButton, Input } from "~/components/interface/TextField/FormControl"
-import style from "./style"
+import FormControl, { FormButton } from "~/components/interface/TextField/FormControl"
 import fetcher from "~/functions/fetcher"
 import useSWR from "swr"
-import SearchInput from "./SearchInput"
-import SearchResult from "./SearchResult"
+import style from "../style"
+import SearchInput from "../SearchInput"
+import SearchResult from "../SearchResult"
+import hasLength from "~/functions/hasLength"
 
-const { base } = style()
+const { base, textfieldResult } = style()
 
-interface SearchBarProps extends ComponentPropsWithoutRef<"div"> {}
+interface SearchTextFieldProps extends ComponentPropsWithoutRef<"div"> {}
 
-const SearchBar = ({ ...rest }: SearchBarProps) => {
+const SearchTextField = ({ ...rest }: SearchTextFieldProps) => {
     const [search, setSearch] = useState("")
     const { isLoading, error, data } = useSWR(search ? `/api/media/search?query=${search}` : null, fetcher, {
         revalidateIfStale: false,
@@ -22,8 +23,9 @@ const SearchBar = ({ ...rest }: SearchBarProps) => {
     })
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => e.preventDefault()
-
     const className = rest.className
+    const hasValue = hasLength(search)
+
     return (
         <div className={base({ className })}>
             <form onSubmit={submitHandler} className="p-px">
@@ -33,9 +35,16 @@ const SearchBar = ({ ...rest }: SearchBarProps) => {
                 </FormControl>
             </form>
 
-            <SearchResult isLoading={isLoading} isError={error} data={data} />
+            {hasValue && (
+                <SearchResult
+                    isLoading={isLoading}
+                    isError={error}
+                    data={data}
+                    className={textfieldResult()}
+                />
+            )}
         </div>
     )
 }
 
-export default SearchBar
+export default SearchTextField

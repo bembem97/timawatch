@@ -3,8 +3,8 @@ import ContainerBox from "~/components/interface/ContainerBox"
 import style from "./style"
 import MobileMenu from "~/components/view/MobileMenu"
 import Logo from "../Logo"
-import SearchBar from "~/components/view/SearchBar"
-import SearchDialog from "~/components/view/SearchBar/SearchDialog"
+import Search from "~/components/view/Search"
+import SearchModal from "~/components/view/Search/SearchModal"
 
 const { header, nav /*link*/ } = style()
 
@@ -17,8 +17,9 @@ const Navbar = () => {
                 <Logo className="[grid-area:l] flex 4xl:hidden" />
 
                 <div className="[grid-area:s] flex items-center 4xl:ml-auto">
-                    <SearchBar className="hidden 4xl:block" />
-                    <SearchDialog className="flex 4xl:hidden" />
+                    <Search className="hidden 4xl:block" />
+                    <SearchModal className="flex 4xl:hidden" />
+                    {/* <SearchTextField className="hidden 4xl:grid" /> */}
                 </div>
             </ContainerBox>
         </header>

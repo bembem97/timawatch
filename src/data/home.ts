@@ -2,6 +2,8 @@ import { API_URL } from "~/constants/misc"
 import URL from "~/constants/url"
 import fetcher from "~/functions/fetcher"
 import getRandomNumber from "~/functions/getRandomNumber"
+import mediaDestructuring from "~/functions/mediaDestructuring"
+import personDestructuring from "~/functions/personDestructuring"
 import { MediaListProps, MediaProps } from "~/types/data/media"
 import { MovieDetails } from "~/types/data/movieDetails"
 import { PersonListProps } from "~/types/data/person"
@@ -74,36 +76,36 @@ const homeData = async () => {
 
 export default homeData
 
-function mediaDestructuring(data: PromiseSettledResult<MediaListProps>): MediaPostersProps | undefined {
-    if ("status" in data && data.status === "rejected") {
-        return
-    }
+// function mediaDestructuring(data: PromiseSettledResult<MediaListProps>): MediaPostersProps | undefined {
+//     if ("status" in data && data.status === "rejected") {
+//         return
+//     }
 
-    const results = data.value.results.map(
-        ({ id, title, name, first_air_date, poster_path, release_date, vote_average }) => ({
-            first_air_date,
-            id,
-            name,
-            poster_path,
-            release_date,
-            title,
-            vote_average,
-        })
-    )
+//     const results = data.value.results.map(
+//         ({ id, title, name, first_air_date, poster_path, release_date, vote_average }) => ({
+//             first_air_date,
+//             id,
+//             name,
+//             poster_path,
+//             release_date,
+//             title,
+//             vote_average,
+//         })
+//     )
 
-    return { ...data.value, results }
-}
+//     return { ...data.value, results }
+// }
 
-function personDestructuring(data: PromiseSettledResult<PersonListProps>): PersonPostersProps | undefined {
-    if ("status" in data && data.status === "rejected") {
-        return
-    }
+// function personDestructuring(data: PromiseSettledResult<PersonListProps>): PersonPostersProps | undefined {
+//     if ("status" in data && data.status === "rejected") {
+//         return
+//     }
 
-    const results = data.value.results.map(({ id, name, profile_path }) => ({
-        id,
-        name,
-        profile_path,
-    }))
+//     const results = data.value.results.map(({ id, name, profile_path }) => ({
+//         id,
+//         name,
+//         profile_path,
+//     }))
 
-    return { ...data.value, results }
-}
+//     return { ...data.value, results }
+// }
