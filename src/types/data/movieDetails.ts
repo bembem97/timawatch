@@ -1,4 +1,4 @@
-export type MovieDetails = {
+export type MovieDetailsProps = {
     adult: boolean
     backdrop_path: string
     belongs_to_collection: null | object

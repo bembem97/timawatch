@@ -8,9 +8,10 @@ export default function personDestructuring(
         return
     }
 
-    const results = data.value.results.map(({ id, name, profile_path }) => ({
+    const results = data.value.results.map(({ id, name, media_type, profile_path }) => ({
         id,
         name,
+        media_type,
         profile_path,
     }))
 

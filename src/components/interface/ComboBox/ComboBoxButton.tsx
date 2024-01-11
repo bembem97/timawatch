@@ -3,6 +3,7 @@ import { Combobox as ComboBoxUI } from "@headlessui/react"
 import style from "./style"
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid"
 import Icon from "../Icon"
+import Button from "../Button"
 
 const { button, icon } = style()
 
@@ -12,7 +13,7 @@ const ComboBoxButton = ({ children, ...rest }: ComboBoxButtonProps) => {
     const className = rest.className
 
     return (
-        <ComboBoxUI.Button {...rest} className={button({ className })}>
+        <ComboBoxUI.Button className={button({ className })}>
             <span className={icon()}>
                 <Icon aria-hidden="true" icon={ChevronUpDownIcon} />
             </span>

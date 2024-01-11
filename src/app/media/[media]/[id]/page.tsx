@@ -1,0 +1,43 @@
+import React from "react"
+import ContainerBox from "~/components/interface/ContainerBox"
+import MediaBanner from "~/components/view/Banner/MediaBanner"
+import MediaCast from "~/components/view/MediaCast"
+import { API_URL } from "~/constants/misc"
+import dynamicMedia, { DynamicDataProps } from "~/data/dynamicMedia"
+import fetcher from "~/functions/fetcher"
+import { MediaProps } from "~/types/data/media"
+
+type MediaPageProps = {
+    params: { id: string; media: MediaProps["media_type"] }
+}
+
+export async function generateMetadata({ params }: MediaPageProps) {
+    const { id, media } = params
+    const data = await fetcher(`${API_URL}${media}/${id}?language=en-US&api_key=${process.env.API_SECRET}`)
+
+    if (!data || typeof data === "undefined") {
+        return { title: "untitled" }
+    }
+    const { title, name } = data
+
+    return { title: `${title || name} - Timawatch` }
+}
+
+export default async function MediaPage({ params }: MediaPageProps) {
+    const { id, media } = params
+    const data: DynamicDataProps = await dynamicMedia({ media, id })
+
+    return (
+        <main className="item-main">
+            <MediaBanner data={data} mediaType={media} />
+
+            <ContainerBox as="section">
+                {media === "movie" && "credits" in data ? (
+                    <MediaCast data={data.credits.cast} />
+                ) : media === "tv" && "aggregate_credits" in data ? (
+                    <MediaCast data={data.aggregate_credits.cast} />
+                ) : null}
+            </ContainerBox>
+        </main>
+    )
+}

@@ -1,4 +1,11 @@
-import React, { ComponentPropsWithRef, Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import React, {
+    ComponentPropsWithRef,
+    Dispatch,
+    SetStateAction,
+    forwardRef,
+    useEffect,
+    useState,
+} from "react"
 import { ComboBoxInput } from "~/components/interface/ComboBox"
 import { useDebounce } from "~/hooks/useDebounce"
 
@@ -6,28 +13,24 @@ interface SearchInputProps extends ComponentPropsWithRef<"input"> {
     setSearch: Dispatch<SetStateAction<string | undefined | null>>
 }
 
-const SearchInput = ({ setSearch, ...rest }: SearchInputProps) => {
+const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({ setSearch, ...rest }, ref) => {
     const [searchInput, setSearchInput] = useState(null)
     const debounce = useDebounce(searchInput)
-    const targetRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => setSearch(debounce), [debounce, setSearch])
-
-    useEffect(() => {
-        if (targetRef.current) {
-            targetRef.current.focus()
-        }
-    }, [targetRef])
 
     return (
         <ComboBoxInput
             {...rest}
-            ref={targetRef}
+            ref={ref}
             placeholder="Search..."
             type="search"
             onChange={(e: any) => setSearchInput(e.target.value)}
+            className="pr-0.5"
         />
     )
-}
+})
+
+SearchInput.displayName = "SearchInput"
 
 export default SearchInput

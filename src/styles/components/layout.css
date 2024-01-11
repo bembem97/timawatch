@@ -4,7 +4,7 @@
         --main: 1fr;
         --footer: minmax(theme(spacing.14), auto);
 
-        @apply grid gap-y-0;
+        @apply grid gap-y-0.5;
         grid-template:
             "h" var(--header)
             "m" var(--main)

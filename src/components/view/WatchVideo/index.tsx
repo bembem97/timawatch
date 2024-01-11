@@ -38,25 +38,17 @@ const WatchVideo = ({ mediaId, mediaType, ...rest }: WatchVideoProps) => {
                 <DialogPanel
                     onClose={closeHandler}
                     outerPanelProps={{
-                        className: "w-[clamp(350px,90vw,900px)] aspect-portrait 2xl:aspect-[16/10]",
+                        className: "w-[clamp(280px,90vw,900px)] aspect-portrait 2xl:aspect-[16/10]",
                     }}
                 >
                     <ContainerBox className="pb-2">
-                        {!isLoading && isError && (
-                            <div className="flex justify-center py-4">
-                                <Text variant="h3" className="text-danger-foreground">
-                                    No Video Available.
-                                </Text>
-                            </div>
-                        )}
-
-                        {isLoading && (
+                        {!isLoading && isError ? (
+                            <NoVideoAvailable />
+                        ) : isLoading ? (
                             <div className="flex justify-center py-4">
                                 <Spinner />
                             </div>
-                        )}
-
-                        {typeof videoData !== "undefined" && (
+                        ) : typeof videoData !== "undefined" ? (
                             <iframe
                                 className="w-full h-full rounded-lg"
                                 allowFullScreen
@@ -66,6 +58,8 @@ const WatchVideo = ({ mediaId, mediaType, ...rest }: WatchVideoProps) => {
                                 src={`https://www.youtube.com/embed/${videoData.key}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             />
+                        ) : (
+                            <NoVideoAvailable />
                         )}
                     </ContainerBox>
                 </DialogPanel>
@@ -75,3 +69,13 @@ const WatchVideo = ({ mediaId, mediaType, ...rest }: WatchVideoProps) => {
 }
 
 export default WatchVideo
+
+function NoVideoAvailable() {
+    return (
+        <div className="flex justify-center py-4">
+            <Text variant="h3" className="text-danger-foreground">
+                No Video Available.
+            </Text>
+        </div>
+    )
+}

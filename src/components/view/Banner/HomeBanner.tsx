@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react"
-import { MovieDetails } from "~/types/data/movieDetails"
+import { MovieDetailsProps } from "~/types/data/movieDetails"
 import style from "./style"
 import { IMAGE_URL } from "~/constants/misc"
 import Text from "~/components/interface/Text"
@@ -10,20 +10,21 @@ import Button from "~/components/interface/Button"
 import Icon from "~/components/interface/Icon"
 import { StarIcon, BookmarkIcon, HeartIcon } from "@heroicons/react/20/solid"
 import WatchVideo from "../WatchVideo"
+import Link from "next/link"
 
 const { base, backdrop, content } = style()
 
 export type HeroProps =
     | {
-          backdrop_path: MovieDetails["backdrop_path"]
-          genres: MovieDetails["genres"]
-          id: MovieDetails["id"]
-          overview: MovieDetails["overview"]
-          release_date: MovieDetails["release_date"]
-          runtime: MovieDetails["runtime"]
-          tagline: MovieDetails["tagline"]
-          title: MovieDetails["title"]
-          vote_average: MovieDetails["vote_average"]
+          backdrop_path: MovieDetailsProps["backdrop_path"]
+          genres: MovieDetailsProps["genres"]
+          id: MovieDetailsProps["id"]
+          overview: MovieDetailsProps["overview"]
+          release_date: MovieDetailsProps["release_date"]
+          runtime: MovieDetailsProps["runtime"]
+          tagline: MovieDetailsProps["tagline"]
+          title: MovieDetailsProps["title"]
+          vote_average: MovieDetailsProps["vote_average"]
       }
     | undefined
 
@@ -37,7 +38,7 @@ const HomeBanner = ({ data }: HomeBannerProps) => {
             <section className={base()}>
                 <div className={backdrop()} />
                 <div className={content()}>
-                    <Text variant="h1" className="text-danger-foreground">
+                    <Text as="p" variant="h1" className="text-danger-foreground">
                         Something went wrong.
                     </Text>
                 </div>
@@ -54,14 +55,16 @@ const HomeBanner = ({ data }: HomeBannerProps) => {
         <section className={base()}>
             <div style={style} className={backdrop()} />
             <div className={content()}>
-                <Text as="h2" variant="h2">
-                    {title} ({year})
-                </Text>
+                <Link href={`/media/movie/${id}`} className="with-hover:hover:underline w-fit">
+                    <Text as="h2" variant="h2">
+                        {title} ({year})
+                    </Text>
+                </Link>
 
                 <div className="flex flex-wrap items-center gap-x-2">
                     <Chip
                         label={Number(vote_average).toFixed(1)}
-                        iconStart={<Icon icon={StarIcon} />}
+                        iconStart={<Icon icon={StarIcon} size="xs" />}
                         variant="filled"
                         color="accent"
                     />

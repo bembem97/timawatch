@@ -22,7 +22,10 @@ const homebannerStyle = tv({
             "before:to-background-dark/30",
             "before:rounded-xl",
         ],
-        content: ["py-2 px-3", "flex", "flex-col", "gap-y-4"],
+        content: ["py-2 px-3", "flex", "flex-col", "gap-y-4", "justify-center"],
+
+        // todo: media banner styles
+        title: [],
     },
 })
 

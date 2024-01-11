@@ -16,28 +16,20 @@ import { MediaProps } from "~/types/data/media"
 interface MediaCarouselProps {
     data: MediaPostersProps | undefined
     heading: string
-    type: MediaProps["media_type"]
+    // type: MediaProps["media_type"]
 }
 
-const MediaCarousel = ({ data, type, heading }: MediaCarouselProps) => {
+const MediaCarousel = ({ data, heading }: MediaCarouselProps) => {
     if (!data || typeof data === "undefined") {
         return <div></div>
     }
 
-    return <MediaDataFulfilled data={data.results} type={type} heading={heading} />
+    return <MediaDataFulfilled data={data.results} heading={heading} />
 }
 
 export default MediaCarousel
 
-function MediaDataFulfilled({
-    data,
-    type,
-    heading,
-}: {
-    data: MediaPosterProps[]
-    heading: string
-    type: MediaProps["media_type"]
-}) {
+function MediaDataFulfilled({ data, heading }: { data: MediaPosterProps[]; heading: string }) {
     const ref = useRef(null)
     const { scrollLeft, scrollRight, muteNext, mutePrev } = useCarousel(ref)
 
@@ -50,41 +42,52 @@ function MediaDataFulfilled({
             />
 
             <CarouselSlide ref={ref} className="bg-background">
-                {data.map(({ first_air_date, id, release_date, vote_average, name, title, poster_path }) => {
-                    const TITLE = name || title || "untitled"
-                    const date = getDateFormat(release_date || first_air_date, {
-                        dateFormat: "full-date-short-month",
-                    })
+                {data.map(
+                    ({
+                        first_air_date,
+                        id,
+                        media_type,
+                        release_date,
+                        vote_average,
+                        name,
+                        title,
+                        poster_path,
+                    }) => {
+                        const TITLE = name || title || "untitled"
+                        const date = getDateFormat(release_date || first_air_date, {
+                            dateFormat: "full-date-short-month",
+                        })
 
-                    return (
-                        <Card key={id} className="basis-36 shrink-0 grow-0">
-                            <CardAction href="/" title={TITLE}>
-                                <CardMedia
-                                    width={600}
-                                    height={900}
-                                    alt={TITLE}
-                                    src={`${IMAGE_URL}w500${poster_path}`}
-                                />
-                            </CardAction>
-                            <CardBody>
-                                <Text variant="h4" className="line-clamp-1">
-                                    {TITLE}
-                                </Text>
-                                <div className="flex justify-between items-center">
-                                    <Text className="text-foreground-mute">{date}</Text>
-                                    <Chip
-                                        label={vote_average.toFixed(1)}
-                                        variant="outlined"
-                                        color="accent"
-                                        size="xs"
-                                        iconStart={<Icon icon={StarIcon} size="xs" />}
+                        return (
+                            <Card key={id} className="basis-36 shrink-0 grow-0">
+                                <CardAction href={`/media/${media_type}/${id}`} title={TITLE}>
+                                    <CardMedia
+                                        width={600}
+                                        height={900}
+                                        alt={TITLE}
+                                        src={`${IMAGE_URL}w500${poster_path}`}
                                     />
-                                </div>
-                                <WatchVideo mediaId={id} mediaType={type} size="sm" />
-                            </CardBody>
-                        </Card>
-                    )
-                })}
+                                </CardAction>
+                                <CardBody>
+                                    <Text variant="h4" className="line-clamp-1">
+                                        {TITLE}
+                                    </Text>
+                                    <div className="flex justify-between items-center">
+                                        <Text className="text-foreground-mute">{date}</Text>
+                                        <Chip
+                                            label={vote_average.toFixed(1)}
+                                            variant="outlined"
+                                            color="accent"
+                                            size="xs"
+                                            iconStart={<Icon icon={StarIcon} size="xs" />}
+                                        />
+                                    </div>
+                                    <WatchVideo mediaId={id} mediaType={media_type} size="sm" />
+                                </CardBody>
+                            </Card>
+                        )
+                    }
+                )}
             </CarouselSlide>
         </Carousel>
     )

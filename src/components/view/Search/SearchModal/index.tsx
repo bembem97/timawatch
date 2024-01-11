@@ -1,17 +1,14 @@
 "use client"
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"
-import React, { ComponentPropsWithoutRef, useState } from "react"
+import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
 import Button from "~/components/interface/Button"
 import ContainerBox from "~/components/interface/ContainerBox"
 import Dialog, { DialogOverlay, DialogPanel } from "~/components/interface/Dialog"
-import Text from "~/components/interface/Text"
-import SearchBar from "."
-import Search from "."
 import ComboBox, { ComboBoxButton } from "~/components/interface/ComboBox"
 import FormControl from "~/components/interface/TextField/FormControl"
-import SearchInput from "./SearchInput"
-import SearchResult from "./SearchResult"
-import useSearchQuery from "./useSearchQuery"
+import ModalSearchInput from "./ModalSearchInput"
+import useSearchQuery from "../useSearchQuery"
+import SearchResult from "../SearchResult"
 
 type SearchModalProps = ComponentPropsWithoutRef<typeof Button>
 
@@ -41,7 +38,7 @@ const SearchModal = ({ ...rest }: SearchModalProps) => {
                             className="grid grid-cols-1 grid-rows-[auto_1fr] h-full"
                         >
                             <FormControl className="w-full gap-1 p-1">
-                                <SearchInput setSearch={setSearch} />
+                                <ModalSearchInput setSearch={setSearch} />
                                 <ComboBoxButton />
                             </FormControl>
 

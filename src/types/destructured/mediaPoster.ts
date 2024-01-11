@@ -1,13 +1,14 @@
 import { MediaListProps, MediaProps } from "../data/media"
 
 export interface MediaPosterProps {
+    first_air_date: MediaProps["first_air_date"]
     id: MediaProps["id"]
+    media_type: MediaProps["media_type"]
     name?: MediaProps["name"]
+    poster_path: MediaProps["poster_path"]
+    release_date: MediaProps["release_date"]
     title?: MediaProps["title"]
     vote_average: MediaProps["vote_average"]
-    first_air_date: MediaProps["first_air_date"]
-    release_date: MediaProps["release_date"]
-    poster_path: MediaProps["poster_path"]
 }
 
 export interface MediaPostersProps {
