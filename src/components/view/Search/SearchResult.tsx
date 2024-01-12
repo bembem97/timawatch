@@ -60,15 +60,13 @@ const SearchResult = ({ data, isError, isLoading, inComponent, ...rest }: Search
 export default SearchResult
 
 function searchResultList({ media_type, ...rest }: MediaProps | PersonProps) {
-    if (media_type === "person") {
-        const { name, id, profile_path } = rest as PersonProps
+    if (media_type === "person" && "profile_path" in rest) {
+        const { name, id, profile_path } = rest
+
         return (
             <ComboBoxOption key={id} value={rest} className="pl-4">
-                <Link href="/">
-                    <Card
-                        // className={resultList()}
-                        layout="landscape"
-                    >
+                <Link href={`/media/person/${id}`}>
+                    <Card layout="landscape">
                         <CardMedia
                             alt=""
                             src={`${IMAGE_URL}w500${profile_path}`}
@@ -91,11 +89,8 @@ function searchResultList({ media_type, ...rest }: MediaProps | PersonProps) {
 
     return (
         <ComboBoxOption key={id} value={rest} className="pl-4 [&]:ui-active:bg-background-dark">
-            <Link href="/">
-                <Card
-                    // className={resultList()}
-                    layout="landscape"
-                >
+            <Link href={`/media/${media_type}/${id}`}>
+                <Card layout="landscape">
                     <CardMedia
                         alt=""
                         src={`${IMAGE_URL}w500${poster_path}`}

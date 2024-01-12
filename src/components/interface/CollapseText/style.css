@@ -1,0 +1,16 @@
+@layer components {
+    .collapse-text {
+        @apply flex flex-col;
+    }
+
+    .collapse__text {
+        @apply leading-[1.5em] line-clamp-[var(--line-clamp)];
+    }
+
+    .text__expanded--true {
+        @apply max-h-max line-clamp-none;
+    }
+    .text__expanded--false {
+        @apply max-h-[9em];
+    }
+}

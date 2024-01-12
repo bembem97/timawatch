@@ -1,3 +1,30 @@
+export type LastEpisodeToAirProps = {
+    id: number
+    name: string
+    overview: string
+    vote_average: number
+    vote_count: number
+    air_date: string
+    episode_number: number
+    episode_type: string
+    production_code: string
+    runtime: number
+    season_number: number
+    show_id: number
+    still_path: string
+}
+
+export type SeasonsProps = {
+    air_date: string
+    episode_count: number
+    id: number
+    name: string
+    overview: string
+    poster_path: string
+    season_number: number
+    vote_average: number
+}
+
 export type TvDetailsProps = {
     adult: boolean
     backdrop_path: string
@@ -19,21 +46,7 @@ export type TvDetailsProps = {
     in_production: boolean
     languages: Array<string>
     last_air_date: string
-    last_episode_to_air: {
-        id: number
-        name: string
-        overview: string
-        vote_average: number
-        vote_count: number
-        air_date: string
-        episode_number: number
-        episode_type: string
-        production_code: string
-        runtime: number
-        season_number: number
-        show_id: number
-        still_path: string
-    }
+    last_episode_to_air: LastEpisodeToAirProps
     name: string
     next_episode_to_air: {
         id: number
@@ -74,16 +87,7 @@ export type TvDetailsProps = {
         iso_3166_1: string
         name: string
     }>
-    seasons: Array<{
-        air_date: string
-        episode_count: number
-        id: number
-        name: string
-        overview: string
-        poster_path: string
-        season_number: number
-        vote_average: number
-    }>
+    seasons: SeasonsProps[]
     spoken_languages: Array<{
         english_name: string
         iso_639_1: string

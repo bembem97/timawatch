@@ -15,15 +15,25 @@ export async function GET(request: Request) {
 
     const destructureData = sliceData.map((prop: MediaProps | PersonProps) => {
         if (prop.media_type === "person") {
-            const { id, name, profile_path, popularity } = prop
-            return { id, name, profile_path, popularity }
+            const { id, media_type, name, profile_path, popularity } = prop
+            return { id, media_type, name, profile_path, popularity }
         }
 
-        const { first_air_date, id, name, popularity, poster_path, release_date, title, vote_average } =
-            prop as MediaProps
+        const {
+            first_air_date,
+            id,
+            media_type,
+            name,
+            popularity,
+            poster_path,
+            release_date,
+            title,
+            vote_average,
+        } = prop as MediaProps
         return {
             first_air_date,
             id,
+            media_type,
             name,
             popularity,
             poster_path,

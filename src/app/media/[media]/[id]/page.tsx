@@ -1,7 +1,11 @@
 import React from "react"
+import CollapseText from "~/components/interface/CollapseText"
 import ContainerBox from "~/components/interface/ContainerBox"
+import Text from "~/components/interface/Text"
 import MediaBanner from "~/components/view/Banner/MediaBanner"
+import LastSeasonSnippet from "~/components/view/LastSeasonSnippet"
 import MediaCast from "~/components/view/MediaCast"
+import UserReviews from "~/components/view/UserReviews"
 import { API_URL } from "~/constants/misc"
 import dynamicMedia, { DynamicDataProps } from "~/data/dynamicMedia"
 import fetcher from "~/functions/fetcher"
@@ -31,12 +35,22 @@ export default async function MediaPage({ params }: MediaPageProps) {
         <main className="item-main">
             <MediaBanner data={data} mediaType={media} />
 
-            <ContainerBox as="section">
+            <ContainerBox as="section" className="flex flex-col gap-y-6 pt-6">
                 {media === "movie" && "credits" in data ? (
                     <MediaCast data={data.credits.cast} />
                 ) : media === "tv" && "aggregate_credits" in data ? (
                     <MediaCast data={data.aggregate_credits.cast} />
                 ) : null}
+
+                {"last_episode_to_air" in data && (
+                    <LastSeasonSnippet
+                        title={data.name}
+                        lastEpisodeToAir={data.last_episode_to_air}
+                        lastSeasonEpisodes={data.seasons}
+                    />
+                )}
+
+                <UserReviews />
             </ContainerBox>
         </main>
     )

@@ -30,8 +30,8 @@ const dynamicMedia = async ({ media, id }: DynamicMediaProps) => {
             credits: {
                 ...data.credits,
                 cast: data.credits.cast.slice(0, 9),
-                // crew: data.credits.crew.slice(0, 1),
                 crew: [],
+                // crew: data.credits.crew.slice(0, 1),
             },
         }
     }
@@ -41,8 +41,8 @@ const dynamicMedia = async ({ media, id }: DynamicMediaProps) => {
             aggregate_credits: {
                 ...data.aggregate_credits,
                 cast: data.aggregate_credits.cast.slice(0, 9),
-                // crew: data.aggregate_credits.crew.slice(0, 1),
                 crew: [],
+                // crew: data.aggregate_credits.crew.slice(0, 1),
             },
         }
     }

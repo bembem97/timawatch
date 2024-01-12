@@ -10,7 +10,7 @@ type CarouselTitleProps = ComponentPropsWithoutRef<typeof Text> & {
 
 const CarouselTitle = ({ heading }: CarouselTitleProps) => {
     return (
-        <Text variant="h2" className={title()}>
+        <Text variant="h2" as="h2" className={title()}>
             {heading}
         </Text>
     )

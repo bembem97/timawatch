@@ -16,8 +16,8 @@ const MediaCast = ({ data }: MediaCastProps) => {
     const ref = useRef(null)
     const { scrollLeft, scrollRight, muteNext, mutePrev } = useCarousel(ref)
     return (
-        <Carousel>
-            <CarouselTitle heading="Casts" />
+        <Carousel as="section">
+            <CarouselTitle heading="Cast" />
             <CarouselButtons
                 prevProps={{ onClick: () => scrollLeft(), disabled: mutePrev }}
                 nextProps={{ onClick: () => scrollRight(), disabled: muteNext }}
