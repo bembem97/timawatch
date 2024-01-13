@@ -11,10 +11,11 @@ type CardMediaProps = ComponentPropsWithoutRef<typeof Image> & {
 
 const CardMedia = ({ as, mediaProps, ...rest }: CardMediaProps) => {
     const className = rest.className
+    const mediaClassName = mediaProps?.className
     const Component = as ?? "div"
 
     return (
-        <Component {...mediaProps} className={media({ className })}>
+        <Component {...mediaProps} className={media({ className: mediaClassName })}>
             <Image {...rest} />
         </Component>
     )

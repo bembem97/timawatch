@@ -52,10 +52,10 @@ function useTextClamped(ref: RefObject<Element>) {
 
     useEffect(() => {
         const target = ref.current
-        if (target) target.scrollHeight > target.clientHeight ? setIsClamped(true) : setIsClamped(false)
+        if (target) setIsClamped(target.scrollHeight > target.clientHeight)
 
         const changeClampOnResize = () => {
-            if (target) target.scrollHeight > target.clientHeight ? setIsClamped(true) : setIsClamped(false)
+            if (target) setIsClamped(target.scrollHeight > target.clientHeight)
         }
 
         window.addEventListener("resize", changeClampOnResize)

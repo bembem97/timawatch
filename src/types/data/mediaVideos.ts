@@ -10,7 +10,7 @@ export type MediaVideoProps = {
     published_at: string
     id: string
 }
-export type MediaVideoListProps = {
+export type MediaVideosDataProps = {
     id: number
     results: MediaVideoProps[]
 }

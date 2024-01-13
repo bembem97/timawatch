@@ -10,7 +10,7 @@ export default function getDateFormat(
     let dateObj: Date
 
     if (date === null || typeof date === "undefined") {
-        return "Date n/a"
+        return "N/A"
     } else if (!date) {
         dateObj = new Date()
 

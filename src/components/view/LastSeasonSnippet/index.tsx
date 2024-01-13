@@ -35,14 +35,18 @@ const LastSeasonSnippet = ({ title, lastEpisodeToAir, lastSeasonEpisodes }: Last
                 Last Season
             </Text>
 
-            <ContainerBox className="bg-background-light rounded-xl py-4 px-2.5">
-                <Card layout="landscape" className="grid-cols-[max-content_1fr] gap-x-4">
+            <ContainerBox className="bg-background-light rounded-xl p-4">
+                <Card
+                    layout="landscape"
+                    className="grid-cols-[0_1fr] 2xl:grid-cols-[max-content_1fr] 2xl:gap-x-4"
+                >
                     <CardMedia
                         alt={title}
                         src={`${IMAGE_URL}w500${lastSeasonEp.poster_path}`}
                         width={600}
                         height={900}
-                        className="w-40 rounded-xl hidden 2xl:block"
+                        mediaProps={{ className: "rounded-xl [contain:paint] w-40" }}
+                        className="hidden 2xl:block"
                     />
                     <CardBody className="gap-y-4">
                         <Text variant="h3">Season {season_number}</Text>
@@ -65,11 +69,14 @@ const LastSeasonSnippet = ({ title, lastEpisodeToAir, lastSeasonEpisodes }: Last
                             {lastEpisodeOverview}
                         </Text>
                         <div className="flex items-center flex-wrap gap-x-2">
-                            <Text variant="h4" className="grow 4xl:grow-0 basis-full 4xl:basis-auto">
+                            <Text
+                                variant="h4"
+                                className="grow 4xl:grow-0 basis-full 4xl:basis-auto mb-2.5 2xl:mb-0"
+                            >
                                 {name}
                             </Text>
                             <Text className="text-foreground-mute">
-                                ({season_number}x{episode_number}) {finaleDate}
+                                ({season_number}x{episode_number}, {finaleDate})
                             </Text>
                             {episode_type === "finale" && <Chip label="Season Finale" variant="filled" />}
                         </div>

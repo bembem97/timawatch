@@ -76,7 +76,10 @@ const TabSample = () => {
                         <Tab.Panel key={idx} className={tabPanel()}>
                             <ul>
                                 {posts.map((post: any) => (
-                                    <li key={post.id} className="relative rounded-md p-3 hover:bg-gray-100">
+                                    <li
+                                        key={post.id}
+                                        className="relative rounded-md p-3 hover:bg-background-light"
+                                    >
                                         <h3 className="text-sm font-medium leading-5">{post.title}</h3>
                                         <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
                                             <li>{post.date}</li>

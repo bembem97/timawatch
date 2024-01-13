@@ -1,6 +1,6 @@
 import { API_URL } from "~/constants/misc"
 import fetcher from "~/functions/fetcher"
-import { MediaVideoListProps } from "~/types/data/mediaVideos"
+import { MediaVideosDataProps } from "~/types/data/mediaVideos"
 
 const SECRET = process.env.API_SECRET
 
@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     const id = searchParams.get("id")
     const media = searchParams.get("media")
 
-    const data: MediaVideoListProps = await fetcher(
+    const data: MediaVideosDataProps = await fetcher(
         `${API_URL}${media}/${id}/videos?api_key=${SECRET}&language=en-US`,
         {
             headers: {

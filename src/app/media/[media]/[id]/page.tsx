@@ -4,6 +4,7 @@ import ContainerBox from "~/components/interface/ContainerBox"
 import Text from "~/components/interface/Text"
 import MediaBanner from "~/components/view/Banner/MediaBanner"
 import LastSeasonSnippet from "~/components/view/LastSeasonSnippet"
+import MediaAlbum from "~/components/view/MediaAlbum"
 import MediaCast from "~/components/view/MediaCast"
 import UserReviews from "~/components/view/UserReviews"
 import { API_URL } from "~/constants/misc"
@@ -50,7 +51,9 @@ export default async function MediaPage({ params }: MediaPageProps) {
                     />
                 )}
 
-                <UserReviews />
+                <UserReviews data={data.reviews.results} />
+
+                <MediaAlbum images={data.images} videos={data.videos} />
             </ContainerBox>
         </main>
     )
