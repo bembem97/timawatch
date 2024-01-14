@@ -1,3 +1,4 @@
+import { API_URL } from "~/constants/misc"
 import fetcher from "~/functions/fetcher"
 import { MediaProps } from "~/types/data/media"
 import { PersonProps } from "~/types/data/person"
@@ -9,7 +10,7 @@ export async function GET(request: Request) {
     const query = searchParams.get("query")
 
     const data = await fetcher(
-        `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1&api_key=${SECRET}`
+        `${API_URL}search/multi?query=${query}&include_adult=false&language=en-US&page=1&api_key=${SECRET}`
     )
     const sliceData = data.results.slice(0, 10)
 

@@ -9,6 +9,7 @@ import { MediaProps } from "~/types/data/media"
 import fetcher from "~/functions/fetcher"
 import Spinner from "~/components/interface/Spinner"
 import Text from "~/components/interface/Text"
+import IFrame from "~/components/interface/IFrame"
 
 type WatchVideoProps = ComponentPropsWithoutRef<typeof Button> & {
     mediaId: number
@@ -49,16 +50,17 @@ const WatchVideo = ({ mediaId, mediaType, ...rest }: WatchVideoProps) => {
                                 <Spinner />
                             </div>
                         ) : typeof videoData !== "undefined" ? (
-                            <iframe
-                                className="w-full h-full rounded-lg"
-                                allowFullScreen
-                                width={650}
-                                height={315}
-                                title="YouTube video player"
-                                src={`https://www.youtube.com/embed/${videoData.key}`}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            />
+                            <IFrame className="w-full h-full rounded-lg" videoId={videoData.key} />
                         ) : (
+                            // <iframe
+                            //     className="w-full h-full rounded-lg"
+                            //     allowFullScreen
+                            //     width={650}
+                            //     height={315}
+                            //     title="YouTube video player"
+                            //     src={`https://www.youtube.com/embed/${videoData.key}`}
+                            //     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            // />
                             <NoVideoAvailable />
                         )}
                     </ContainerBox>

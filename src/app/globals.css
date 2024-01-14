@@ -23,4 +23,5 @@
 @import "../components/interface/TextField/style.css";
 
 @import "tailwindcss/utilities";
+@import "../styles/utilities/effects.css";
 @import "../styles/utilities/scrollbar.css";

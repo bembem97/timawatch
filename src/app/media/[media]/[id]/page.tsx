@@ -6,6 +6,7 @@ import MediaBanner from "~/components/view/Banner/MediaBanner"
 import LastSeasonSnippet from "~/components/view/LastSeasonSnippet"
 import MediaAlbum from "~/components/view/MediaAlbum"
 import MediaCast from "~/components/view/MediaCast"
+import Recommendations from "~/components/view/Recommendations"
 import UserReviews from "~/components/view/UserReviews"
 import { API_URL } from "~/constants/misc"
 import dynamicMedia, { DynamicDataProps } from "~/data/dynamicMedia"
@@ -53,7 +54,9 @@ export default async function MediaPage({ params }: MediaPageProps) {
 
                 <UserReviews data={data.reviews.results} />
 
-                <MediaAlbum images={data.images} videos={data.videos} />
+                <MediaAlbum mediaId={id} mediaType={media} />
+
+                <Recommendations mediaId={id} mediaType={media} />
             </ContainerBox>
         </main>
     )

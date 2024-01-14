@@ -1,0 +1,37 @@
+@layer utilities {
+    .screen-container {
+        @apply block relative rounded-xl overflow-hidden;
+
+        &::before {
+            @apply absolute inset-0 z-20 rounded-[inherit];
+            content: "";
+            box-shadow: theme(boxShadow.glass);
+            background-image: theme(backgroundImage.glass);
+        }
+
+        &::after {
+            @apply absolute -translate-x-full inset-0;
+            content: "";
+            background-image: linear-gradient(
+                to right,
+                transparent 33%,
+                theme(colors.foreground.DEFAULT / 0.17) 66%,
+                transparent
+            );
+        }
+        &:hover::after {
+            @apply translate-x-full transition-transform duration-500;
+        }
+
+        &:hover .card__media {
+            scale: 1.05;
+        }
+
+        & > * {
+            transition: scale 200ms;
+        }
+        &:hover > * {
+            scale: 1.05;
+        }
+    }
+}

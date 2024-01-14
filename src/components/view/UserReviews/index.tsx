@@ -1,5 +1,5 @@
 import { StarIcon } from "@heroicons/react/20/solid"
-import React from "react"
+import React, { ReactNode } from "react"
 import { CardMedia } from "~/components/interface/Card"
 import Chip from "~/components/interface/Chip"
 import CollapseText from "~/components/interface/CollapseText"
@@ -16,6 +16,25 @@ interface UserReviewsProps {
 }
 
 const UserReviews = ({ data }: UserReviewsProps) => {
+    if (data.length === 0) {
+        return (
+            <section>
+                <div className="flex items-end gap-x-8">
+                    <Text variant="h2" as="h2">
+                        Social
+                    </Text>
+                    <Text variant="h3">Reviews</Text>
+                </div>
+
+                <Box>
+                    <Text variant="h3" className="text-danger-foreground block text-center">
+                        No Reviews
+                    </Text>
+                </Box>
+            </section>
+        )
+    }
+
     const random = getRandomNumber(data.length)
     const {
         author_details: { avatar_path, name, rating, username },
@@ -32,7 +51,7 @@ const UserReviews = ({ data }: UserReviewsProps) => {
                 <Text variant="h3">Reviews</Text>
             </div>
 
-            <ContainerBox className="rounded-xl bg-background-light px-2.5 py-4">
+            <Box>
                 <div className="grid [--grid-area:3.5rem_1fr] grid-cols-[var(--grid-area)] grid-rows-[var(--grid-area)] gap-x-2.5">
                     <div className="col-[1/2] row-[1/2] rounded-full overflow-hidden bg-gradient-to-br from-background-light to-background-dark border-none border-transparent">
                         <CardMedia
@@ -66,9 +85,13 @@ const UserReviews = ({ data }: UserReviewsProps) => {
                         </CollapseText>
                     </div>
                 </div>
-            </ContainerBox>
+            </Box>
         </section>
     )
 }
 
 export default UserReviews
+
+function Box({ children }: { children: ReactNode }) {
+    return <ContainerBox className="rounded-xl bg-background-light px-2.5 py-4">{children}</ContainerBox>
+}
