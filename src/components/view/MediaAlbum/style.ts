@@ -7,6 +7,7 @@ const mediaAlbumStyle = tv({
         tabContainer: [
             "px-0",
             "grid",
+            "gap-y-8",
             "items-center",
             "grid-cols-1",
             "2xl:grid-cols-[max-content_1fr]",

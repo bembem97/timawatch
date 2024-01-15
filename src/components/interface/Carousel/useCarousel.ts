@@ -62,10 +62,10 @@ export default function useCarousel(ref: RefProps) {
         return () => window.removeEventListener("resize", onResizeCb)
     }, [ref, setScroll, onScrollCb])
 
-    useEffect(() => {
-        const target = ref.current
-        if (target && target.clientWidth === target.scrollWidth) setMuteNext(true)
-    }, [ref])
+    // useEffect(() => {
+    //     const target = ref.current
+    //     if (target && target.clientWidth === target.scrollWidth) setMuteNext(true)
+    // }, [ref, setMuteNext])
 
     return { scrollLeft, scrollRight, mutePrev, muteNext }
 }

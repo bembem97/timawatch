@@ -40,7 +40,7 @@ function PersonDataFulfilled({ data, heading }: { data: PersonPosterProps[]; hea
 
                     return (
                         <Card key={id} className="basis-36 shrink-0 grow-0">
-                            <CardAction href="/" title={NAME}>
+                            <CardAction href={`/media/person/${id}`} title={NAME}>
                                 <CardMedia
                                     width={600}
                                     height={900}

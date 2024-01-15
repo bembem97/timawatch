@@ -34,7 +34,7 @@ export default async function MediaPage({ params }: MediaPageProps) {
     const data: DynamicDataProps = await dynamicMedia({ media, id })
 
     return (
-        <main className="item-main">
+        <main className="item-main mb-8">
             <MediaBanner data={data} mediaType={media} />
 
             <ContainerBox as="section" className="flex flex-col gap-y-6 pt-6">

@@ -2,7 +2,6 @@
 import Image from "next/image"
 import React, { ReactNode, useRef } from "react"
 import useSWR from "swr"
-import Card, { CardAction, CardMedia } from "~/components/interface/Card"
 import Carousel, { CarouselButtons, CarouselSlide, CarouselTitle } from "~/components/interface/Carousel"
 import useCarousel from "~/components/interface/Carousel/useCarousel"
 import Link from "~/components/interface/Link"
@@ -11,8 +10,6 @@ import Text from "~/components/interface/Text"
 import { IMAGE_URL } from "~/constants/misc"
 import fetcher from "~/functions/fetcher"
 import { MediaProps } from "~/types/data/media"
-import { MovieRecommendationProps } from "~/types/data/movieRecommendations"
-import { TvRecommendationProps } from "~/types/data/tvRecommendations"
 
 interface RecommendationsProps {
     mediaId: string
@@ -60,7 +57,7 @@ const Recommendations = ({ mediaId, mediaType }: RecommendationsProps) => {
                     <div className="pt-4 flex justify-center animate-pulse w-full">
                         <Spinner />
                     </div>
-                ) : typeof data !== "undefined" && typeof recommendations !== "undefined" ? (
+                ) : data.length > 0 && typeof recommendations !== "undefined" ? (
                     recommendations.map(({ id, backdrop_path, media_type, ...rec }) => {
                         if ("title" in rec) {
                             const { title } = rec
@@ -111,8 +108,8 @@ export default Recommendations
 
 function SomethingIsWrong({ children }: { children: ReactNode }) {
     return (
-        <div className="w-full self-stretch bg-danger-background text-danger-foreground ">
-            <div className="pt-4 flex justify-center">
+        <div className="w-full self-stretch bg-danger-background/40 text-danger-foreground rounded-xl">
+            <div className="flex justify-center items-center h-20 self-stretch">
                 <Text variant="h3">{children}</Text>
             </div>
         </div>

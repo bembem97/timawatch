@@ -1,6 +1,6 @@
 @layer components {
     .carousel {
-        @apply grid gap-x-2.5 gap-y-4 w-full basis-full;
+        @apply grid gap-x-2.5 gap-y-8 w-full basis-full;
         grid-template-columns: max-content 1fr repeat(2, theme(spacing.9));
         grid-template-rows: max-content minmax(310px, 1fr);
         grid-template-areas:

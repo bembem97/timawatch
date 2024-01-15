@@ -60,51 +60,63 @@ const MediaAlbum = ({ mediaId, mediaType }: MediaAlbumProps) => {
                             <Spinner />
                         </div>
                     </div>
-                ) : typeof data !== "undefined" && typeof album !== "undefined" ? (
+                ) : typeof album !== "undefined" ? (
                     <Tab.Panels className={tabPanels()}>
                         <Tab.Panel className={tabPanel()}>
                             <div className={albumItem()}>
-                                {album.images.backdrops.map(({ file_path }) => (
-                                    <div
-                                        key={file_path}
-                                        className="relative basis-96 shrink-0 grow-0 aspect-video"
-                                    >
-                                        <Image
-                                            src={`${IMAGE_URL}w1280${file_path}`}
-                                            alt=""
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        />
-                                    </div>
-                                ))}
+                                {album.images.backdrops.length > 0 ? (
+                                    album.images.backdrops.map(({ file_path }) => (
+                                        <div
+                                            key={file_path}
+                                            className="relative basis-96 shrink-0 grow-0 aspect-video"
+                                        >
+                                            <Image
+                                                src={`${IMAGE_URL}w1280${file_path}`}
+                                                alt=""
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            />
+                                        </div>
+                                    ))
+                                ) : (
+                                    <SomethingIsWrong>No images/videos available</SomethingIsWrong>
+                                )}
                             </div>
                         </Tab.Panel>
 
                         <Tab.Panel className={tabPanel()}>
                             <div className={albumItem()}>
-                                {album.images.posters.map(({ file_path }) => (
-                                    <div
-                                        key={file_path}
-                                        className="relative basis-44 shrink-0 grow-0 aspect-portrait"
-                                    >
-                                        <Image
-                                            src={`${IMAGE_URL}w500${file_path}`}
-                                            alt=""
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        />
-                                    </div>
-                                ))}
+                                {album.images.posters.length > 0 ? (
+                                    album.images.posters.map(({ file_path }) => (
+                                        <div
+                                            key={file_path}
+                                            className="relative basis-44 shrink-0 grow-0 aspect-portrait"
+                                        >
+                                            <Image
+                                                src={`${IMAGE_URL}w500${file_path}`}
+                                                alt=""
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            />
+                                        </div>
+                                    ))
+                                ) : (
+                                    <SomethingIsWrong>No images/videos available</SomethingIsWrong>
+                                )}
                             </div>
                         </Tab.Panel>
 
                         <Tab.Panel className={tabPanel()}>
                             <div className={albumItem()}>
-                                {album.videos.map(({ id, key }) => (
-                                    <div key={id} className="basis-96 shrink-0 grow-0 aspect-video">
-                                        <IFrame videoId={key} className="w-full" />
-                                    </div>
-                                ))}
+                                {album.videos.length > 0 ? (
+                                    album.videos.map(({ id, key }) => (
+                                        <div key={id} className="basis-96 shrink-0 grow-0 aspect-video">
+                                            <IFrame videoId={key} className="w-full" />
+                                        </div>
+                                    ))
+                                ) : (
+                                    <SomethingIsWrong>No images/videos available</SomethingIsWrong>
+                                )}
                             </div>
                         </Tab.Panel>
                     </Tab.Panels>
@@ -120,8 +132,8 @@ export default MediaAlbum
 
 function SomethingIsWrong({ children }: { children: ReactNode }) {
     return (
-        <div className="col-span-full 2xl:row-[2/3] self-stretch bg-danger-background text-danger-foreground ">
-            <div className="pt-4 flex justify-center">
+        <div className="col-span-full 2xl:row-[2/3] w-full h-28 self-stretch bg-danger-background/40 text-danger-foreground rounded-xl">
+            <div className="flex justify-center items-center h-full">
                 <Text variant="h3">{children}</Text>
             </div>
         </div>
