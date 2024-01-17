@@ -15,5 +15,5 @@ export type PersonDetailsProps = {
     place_of_birth: string
     popularity: number
     profile_path: string
-    combined_credits: CombinedCreditsProps
+    combined_credits: Omit<CombinedCreditsProps, "id">
 }
