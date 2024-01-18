@@ -2,6 +2,7 @@
 @import "../styles/base/default.css";
 
 @import "tailwindcss/components";
+@import "./media/person/[id]/style.css";
 @import "../styles/components/3d.css";
 @import "../styles/components/layout.css";
 @import "../components/interface/Button/style.css";

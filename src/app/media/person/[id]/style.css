@@ -1,0 +1,26 @@
+@layer components {
+    .person-details {
+    }
+
+    .personal-info {
+        --kupos: minmax(0, min-content);
+        @apply grid gap-x-1 gap-y-4;
+
+        grid-template:
+            "person" var(--kupos)
+            "info" var(--kupos)
+            "bio" var(--kupos)
+            "credits" var(--kupos) / minmax(0, 1fr);
+
+        @media (min-width: theme(screens.2xl)) {
+            grid-template:
+                "person info" var(--kupos)
+                "bio bio" var(--kupos)
+                "credits credits" var(--kupos) / theme(maxWidth.80) minmax(0, 1fr);
+        }
+    }
+
+    /* @media screen(sm) {
+        
+    } */
+}

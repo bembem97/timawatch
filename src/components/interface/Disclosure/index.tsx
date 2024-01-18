@@ -8,11 +8,7 @@ import DisclosureContent from "./DisclosureContent"
 interface DisclosureProps extends ComponentPropsWithoutRef<typeof DisclosureUI> {}
 
 const Disclosure = ({ children, ...rest }: DisclosureProps) => {
-    return (
-        <DisclosureUI {...rest} as="div">
-            {children}
-        </DisclosureUI>
-    )
+    return <DisclosureUI {...rest}>{children}</DisclosureUI>
 }
 
 export default Disclosure

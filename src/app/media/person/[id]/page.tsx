@@ -3,7 +3,7 @@ import React from "react"
 import Card from "~/components/interface/Card"
 import CollapseText from "~/components/interface/CollapseText"
 import Text from "~/components/interface/Text"
-import PersonCredits from "~/components/view/PersonCredits"
+import PersonCredits, { AllCrewCreditsProps } from "~/components/view/PersonCredits"
 import { API_URL, IMAGE_URL } from "~/constants/misc"
 import dynamicPerson from "~/data/dynamicPerson"
 import fetcher from "~/functions/fetcher"
@@ -60,20 +60,30 @@ export default async function PersonPage({ params }: PersonPageProps) {
     const crewCreditsGroupedByYear = groupCreditsByYear(combined_credits.crew)
     const actorCastCredits = sortByYearDesc(castCreditsGroupedByYear)
 
-    const crewJobs = groupByCrewJobs(crewCreditsGroupedByYear)
+    const crewDepartment: AllCrewCreditsProps[] = groupByCrewDepartment(crewCreditsGroupedByYear)
 
     return (
-        <main className="item-main grid grid-cols-1 gap-y-8">
+        <main className="item-main px-2 gap-y-4 personal-info">
             {/* //todo ACTOR's AVATAR */}
-            <Image
-                src={`${IMAGE_URL}w500${profile_path}`}
-                alt={name}
-                width={600}
-                height={900}
-                className="object-contain aspect-portrait rounded-xl shadow-glass"
-            />
+            <div className="flex flex-col gap-y-4 [grid-area:person]">
+                <Image
+                    src={`${IMAGE_URL}w500${profile_path}`}
+                    alt={name}
+                    width={600}
+                    height={900}
+                    className="rounded-xl justify-self-center w-full max-w-[theme(width.80)] 2xl:max-w-xs mx-auto"
+                />
+
+                <Text variant="h2" as="h2" className="block 2xl:hidden">
+                    {name}
+                </Text>
+            </div>
+
             {/* //todo PERSONAL INFO */}
-            <section className="flex flex-col gap-y-4">
+            <section className="flex flex-col gap-y-2.5 [grid-area:info]">
+                <Text variant="h2" as="h2" className="2xl:block hidden">
+                    {name}
+                </Text>
                 <Info heading="Known for" label={known_for_department} />
                 <Info heading="Known credits" label={combined_credits.cast.length} />
                 <Info heading="Gender" label={GENDER[gender]} />
@@ -84,33 +94,22 @@ export default async function PersonPage({ params }: PersonPageProps) {
             </section>
 
             {/* //todo NAME & BIOGRAPHY */}
-            <section className="flex flex-col gap-y-8">
-                <Text variant="h2" as="h2">
-                    {name}
-                </Text>
+
+            <section className="flex flex-col gap-y-2.5 [grid-area:bio]">
+                <Text variant="h3">Biography</Text>
                 <CollapseText clamp={6}>
                     {bio.map((text, i) => (
-                        <Text key={i} as="p" className="mb-4">
+                        <Text key={i} as="p" className="mb-4 text-foreground-mute">
                             {text}
                         </Text>
                     ))}
                 </CollapseText>
             </section>
 
-            <section>
-                {/* {actorCastCredits.map(({ data, year }, i) => (
-                    <div key={i}>
-                        <Text variant="h3">{year}</Text>
-                        {data.map(({ id, name, title }) => (
-                            <div key={id}>
-                                <Text className="text-foreground-mute">{name || title || "untitled"}</Text>
-                            </div>
-                        ))}
-                    </div>
-                ))} */}
+            <section className=" [grid-area:credits]">
                 <PersonCredits
                     person={actorCastCredits}
-                    crewCredits={crewJobs}
+                    crewCredits={crewDepartment}
                     known_for_department={known_for_department}
                 />
             </section>
@@ -120,13 +119,13 @@ export default async function PersonPage({ params }: PersonPageProps) {
 
 function Info({ heading, label }: { heading: string; label: string | number | string[] }) {
     return (
-        <div className="flex flex-col gap-y-2.5">
+        <div className="flex flex-col">
             <Text variant="h3" as="h3" className="capitalize">
                 {heading}
             </Text>
 
             {Array.isArray(label) ? (
-                <div className="flex flex-col gap-y-2.5">
+                <div className="flex flex-col">
                     {label.map((text, i) => (
                         <Text key={i} className="capitalize text-foreground-mute">
                             {text}
@@ -182,10 +181,10 @@ function sortByYearDesc(data: { [key: string]: CastCreditsProps[] }) {
     return creditsGroupedByYear
 }
 
-function groupByCrewJobs(data: { [key: string]: CastCreditsProps[] & CrewCreditsProps[] }) {
-    const crewJobs = Object.values(data)
+function groupByCrewDepartment(data: { [key: string]: CastCreditsProps[] & CrewCreditsProps[] }) {
+    const crewDepartment = Object.values(data)
 
-    const groupedByJob = crewJobs.flat().reduce((acc, cur) => {
+    const groupedByDepartment = crewDepartment.flat().reduce((acc, cur) => {
         const department = cur.department.toLocaleLowerCase()
 
         if (!acc[department as keyof typeof acc]) {
@@ -195,11 +194,11 @@ function groupByCrewJobs(data: { [key: string]: CastCreditsProps[] & CrewCredits
         return acc
     }, {} as { [key: string]: CrewCreditsProps[] })
 
-    const getDepartmentName = Object.keys(groupedByJob)
-    const mapJobs = getDepartmentName.map((job) => ({
-        job,
-        data: sortByYearDesc(groupCreditsByYear(groupedByJob[job])),
+    const getDepartmentName = Object.keys(groupedByDepartment)
+    const mapDepartment = getDepartmentName.map((department) => ({
+        department,
+        data: sortByYearDesc(groupCreditsByYear(groupedByDepartment[department])),
     }))
 
-    return mapJobs
+    return mapDepartment
 }

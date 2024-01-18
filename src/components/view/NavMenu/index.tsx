@@ -1,7 +1,7 @@
 "use client"
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/20/solid"
 import Link from "next/link"
-import React from "react"
+import React, { Fragment } from "react"
 import Button from "~/components/interface/Button"
 import Disclosure, {
     DisclosureButton,
@@ -16,13 +16,12 @@ const NavMenu = () => {
     return (
         <>
             {menuData.map(({ id, label, Icon, status }) => (
-                <Disclosure key={id} className="disclosure">
+                <Disclosure key={id} as={"div"} className="disclosure">
                     <div className="pl-4 menu__accordion with-hover:hover:menu__accordion--selected">
                         <DisclosureButton iconStart={Icon} className="w-full">
                             {label}
                         </DisclosureButton>
                     </div>
-
                     <DisclosurePanel>
                         <DisclosureContent>
                             <List key={id} as="div">
