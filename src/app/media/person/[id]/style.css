@@ -2,21 +2,34 @@
     .person-details {
     }
 
-    .personal-info {
-        --kupos: minmax(0, min-content);
-        @apply grid gap-x-1 gap-y-4;
+    .personal-details {
+        @apply @container/main;
 
-        grid-template:
-            "person" var(--kupos)
-            "info" var(--kupos)
-            "bio" var(--kupos)
-            "credits" var(--kupos) / minmax(0, 1fr);
+        & > .pd-box {
+            --kupos: minmax(0, min-content);
+            @apply grid gap-2.5;
 
-        @media (min-width: theme(screens.2xl)) {
             grid-template:
-                "person info" var(--kupos)
-                "bio bio" var(--kupos)
-                "credits credits" var(--kupos) / theme(maxWidth.80) minmax(0, 1fr);
+                "img" var(--kupos)
+                "name" var(--kupos)
+                "info" var(--kupos)
+                "bio" var(--kupos) / minmax(0, 1fr);
+
+            @container main (min-width: theme(screens.4xl)) {
+                grid-template:
+                    "img name" var(--kupos)
+                    "img bio" var(--kupos)
+                    "info bio" var(--kupos)
+                    "info bio" minmax(0, 1fr) / theme(maxWidth.72) minmax(0, 1fr);
+            }
+
+            /* @container (min-width: theme(screens.4xl)) {
+            grid-template:
+                "img name" var(--kupos)
+                "img bio" var(--kupos)
+                "info bio" var(--kupos)
+                "info bio" minmax(0, 1fr) / theme(maxWidth.80) minmax(0, 1fr);
+        } */
         }
     }
 

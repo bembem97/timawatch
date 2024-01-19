@@ -32,6 +32,7 @@
 
         & > .item-footer {
             grid-area: f;
+            @apply mt-8;
         }
     }
 }

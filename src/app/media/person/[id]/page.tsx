@@ -3,6 +3,7 @@ import React from "react"
 import Card from "~/components/interface/Card"
 import CollapseText from "~/components/interface/CollapseText"
 import Text from "~/components/interface/Text"
+import KnownFor from "~/components/view/KnownForCarousel"
 import PersonCredits, { AllCrewCreditsProps } from "~/components/view/PersonCredits"
 import { API_URL, IMAGE_URL } from "~/constants/misc"
 import dynamicPerson from "~/data/dynamicPerson"
@@ -63,56 +64,51 @@ export default async function PersonPage({ params }: PersonPageProps) {
     const crewDepartment: AllCrewCreditsProps[] = groupByCrewDepartment(crewCreditsGroupedByYear)
 
     return (
-        <main className="item-main px-2 gap-y-4 personal-info">
-            {/* //todo ACTOR's AVATAR */}
-            <div className="flex flex-col gap-y-4 [grid-area:person]">
-                <Image
-                    src={`${IMAGE_URL}w500${profile_path}`}
-                    alt={name}
-                    width={600}
-                    height={900}
-                    className="rounded-xl justify-self-center w-full max-w-[theme(width.80)] 2xl:max-w-xs mx-auto"
-                />
-
-                <Text variant="h2" as="h2" className="block 2xl:hidden">
-                    {name}
-                </Text>
+        <main className="item-main px-2 gap-y-4 personal-details">
+            <div className="pd-box">
+                {/* //todo ACTOR's AVATAR */}
+                <div className="flex flex-col gap-y-4 [grid-area:img]">
+                    <Image
+                        src={`${IMAGE_URL}w500${profile_path}`}
+                        alt={name}
+                        width={600}
+                        height={900}
+                        className="rounded-xl justify-self-center w-full max-w-[theme(width.80)] 2xl:max-w-xs mx-auto"
+                    />
+                </div>
+                <div className="[grid-area:name]">
+                    <Text variant="h2" as="h2">
+                        {name}
+                    </Text>
+                </div>
+                {/* //todo PERSONAL INFO */}
+                <section className="flex flex-col gap-y-2.5 [grid-area:info]">
+                    <Info heading="Known for" label={known_for_department} />
+                    <Info heading="Known credits" label={combined_credits.cast.length} />
+                    <Info heading="Gender" label={GENDER[gender]} />
+                    <Info heading="Birthday" label={`${dateOfBirth} (${personAge})`} />
+                    <Info heading="Place of birth" label={place_of_birth} />
+                    {dateOfDeath && <Info heading="DeathDay" label={dateOfDeath} />}
+                    <Info heading="Also known as" label={also_known_as} />
+                </section>
+                {/* //todo BIOGRAPHY / SHOWS AN ACTOR KNOWN FOR / ACTOR's COMPLETE CREDITS */}
+                <section className="flex flex-col gap-y-2.5 [grid-area:bio]">
+                    <Text variant="h3">Biography</Text>
+                    <CollapseText clamp={6}>
+                        {bio.map((text, i) => (
+                            <Text key={i} as="p" className="mb-4 text-foreground-mute">
+                                {text}
+                            </Text>
+                        ))}
+                    </CollapseText>
+                    <KnownFor data={combined_credits.cast} />
+                    <PersonCredits
+                        person={actorCastCredits}
+                        crewCredits={crewDepartment}
+                        known_for_department={known_for_department}
+                    />
+                </section>
             </div>
-
-            {/* //todo PERSONAL INFO */}
-            <section className="flex flex-col gap-y-2.5 [grid-area:info]">
-                <Text variant="h2" as="h2" className="2xl:block hidden">
-                    {name}
-                </Text>
-                <Info heading="Known for" label={known_for_department} />
-                <Info heading="Known credits" label={combined_credits.cast.length} />
-                <Info heading="Gender" label={GENDER[gender]} />
-                <Info heading="Birthday" label={`${dateOfBirth} (${personAge})`} />
-                <Info heading="Place of birth" label={place_of_birth} />
-                {dateOfDeath && <Info heading="DeathDay" label={dateOfDeath} />}
-                <Info heading="Also known as" label={also_known_as} />
-            </section>
-
-            {/* //todo NAME & BIOGRAPHY */}
-
-            <section className="flex flex-col gap-y-2.5 [grid-area:bio]">
-                <Text variant="h3">Biography</Text>
-                <CollapseText clamp={6}>
-                    {bio.map((text, i) => (
-                        <Text key={i} as="p" className="mb-4 text-foreground-mute">
-                            {text}
-                        </Text>
-                    ))}
-                </CollapseText>
-            </section>
-
-            <section className=" [grid-area:credits]">
-                <PersonCredits
-                    person={actorCastCredits}
-                    crewCredits={crewDepartment}
-                    known_for_department={known_for_department}
-                />
-            </section>
         </main>
     )
 }
