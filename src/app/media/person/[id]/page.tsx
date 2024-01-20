@@ -64,10 +64,10 @@ export default async function PersonPage({ params }: PersonPageProps) {
     const crewDepartment: AllCrewCreditsProps[] = groupByCrewDepartment(crewCreditsGroupedByYear)
 
     return (
-        <main className="item-main px-2 gap-y-4 personal-details">
+        <main className="item-main px-2 py-1 gap-y-4 personal-details">
             <div className="pd-box">
                 {/* //todo ACTOR's AVATAR */}
-                <div className="flex flex-col gap-y-4 [grid-area:img]">
+                <div className="flex flex-col gap-y-4 pd-img">
                     <Image
                         src={`${IMAGE_URL}w500${profile_path}`}
                         alt={name}
@@ -76,13 +76,13 @@ export default async function PersonPage({ params }: PersonPageProps) {
                         className="rounded-xl justify-self-center w-full max-w-[theme(width.80)] 2xl:max-w-xs mx-auto"
                     />
                 </div>
-                <div className="[grid-area:name]">
-                    <Text variant="h2" as="h2">
+                <div className="pd-name mt-2.5 mb-4 @xl/main:mt-0 @xl/main:mb-0">
+                    <Text variant="h2" as="h2" className="text-center @xl/main:text-left">
                         {name}
                     </Text>
                 </div>
                 {/* //todo PERSONAL INFO */}
-                <section className="flex flex-col gap-y-2.5 [grid-area:info]">
+                <section className="grid grid-cols-[repeat(auto-fit,minmax(144px,auto))] @xl/main:flex @xl/main:flex-col gap-y-2.5 pd-info">
                     <Info heading="Known for" label={known_for_department} />
                     <Info heading="Known credits" label={combined_credits.cast.length} />
                     <Info heading="Gender" label={GENDER[gender]} />
@@ -92,7 +92,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     <Info heading="Also known as" label={also_known_as} />
                 </section>
                 {/* //todo BIOGRAPHY / SHOWS AN ACTOR KNOWN FOR / ACTOR's COMPLETE CREDITS */}
-                <section className="flex flex-col gap-y-2.5 [grid-area:bio]">
+                <section className="flex flex-col gap-y-2.5 pd-bio">
                     <Text variant="h3">Biography</Text>
                     <CollapseText clamp={6}>
                         {bio.map((text, i) => (
@@ -101,7 +101,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
                             </Text>
                         ))}
                     </CollapseText>
+
                     <KnownFor data={combined_credits.cast} />
+
                     <PersonCredits
                         person={actorCastCredits}
                         crewCredits={crewDepartment}

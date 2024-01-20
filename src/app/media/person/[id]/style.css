@@ -1,7 +1,4 @@
 @layer components {
-    .person-details {
-    }
-
     .personal-details {
         @apply @container/main;
 
@@ -9,27 +6,46 @@
             --kupos: minmax(0, min-content);
             @apply grid gap-2.5;
 
+            @container main (min-width: theme(screens.4xl)) {
+                grid-template-columns: theme(spacing.72) minmax(0, 1fr);
+            }
+
             grid-template:
                 "img" var(--kupos)
                 "name" var(--kupos)
                 "info" var(--kupos)
-                "bio" var(--kupos) / minmax(0, 1fr);
+                "bio" minmax(0, 1fr) / minmax(0, 1fr);
+
+            @container main (min-width: theme(screens.xl)) {
+                grid-template:
+                    "img name" var(--kupos)
+                    "img bio" var(--kupos)
+                    "img bio" var(--kupos)
+                    "info bio" minmax(0, 1fr) / theme(maxWidth.56) minmax(0, 1fr);
+            }
 
             @container main (min-width: theme(screens.4xl)) {
                 grid-template:
                     "img name" var(--kupos)
                     "img bio" var(--kupos)
-                    "info bio" var(--kupos)
+                    "img bio" var(--kupos)
                     "info bio" minmax(0, 1fr) / theme(maxWidth.72) minmax(0, 1fr);
             }
+            & > .pd-img {
+                grid-area: img;
+            }
 
-            /* @container (min-width: theme(screens.4xl)) {
-            grid-template:
-                "img name" var(--kupos)
-                "img bio" var(--kupos)
-                "info bio" var(--kupos)
-                "info bio" minmax(0, 1fr) / theme(maxWidth.80) minmax(0, 1fr);
-        } */
+            & > .pd-name {
+                grid-area: name;
+            }
+
+            & > .pd-info {
+                grid-area: info;
+            }
+
+            & > .pd-bio {
+                grid-area: bio;
+            }
         }
     }
 

@@ -27,7 +27,7 @@ const NavMenu = () => {
                             <List key={id} as="div">
                                 {status.map(({ id, label, pathname }) => (
                                     <ListItem as="div" key={id}>
-                                        <ListItemButton as={Link} href={pathname}>
+                                        <ListItemButton as={Link} href={`/discover${pathname}`}>
                                             <ListItemText>
                                                 <Text className="text-foreground-mute">{label}</Text>
                                             </ListItemText>

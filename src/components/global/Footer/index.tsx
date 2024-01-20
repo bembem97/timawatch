@@ -21,7 +21,7 @@ const Footer = () => {
                                 {status.map(({ id, label, pathname }) => (
                                     <Link
                                         key={id}
-                                        href={pathname}
+                                        href={`/discover${pathname}`}
                                         className="text-foreground-mute hover:underline"
                                     >
                                         {label}
