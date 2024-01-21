@@ -24,7 +24,7 @@ export async function GET(request: Request) {
 
         if ("title" in prop) {
             const { title } = prop
-            return { title, backdrop_path, id }
+            return { title, backdrop_path, id, media_type }
         }
 
         const { name } = prop

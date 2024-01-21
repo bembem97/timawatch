@@ -73,6 +73,7 @@ const Recommendations = ({ mediaId, mediaType }: RecommendationsProps) => {
                                             alt={title}
                                             width={900}
                                             height={600}
+                                            className="w-[288px] h-[162.133px]"
                                         />
                                     </Link>
                                 </div>
