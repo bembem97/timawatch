@@ -1,6 +1,7 @@
+"use client"
 import React, { ReactNode, createContext } from "react"
 
-interface FilterContextProps {
+export interface FilterContextProps {
     certification: string
     certification_country: string
     first_air_date_gte: string
@@ -15,6 +16,7 @@ interface FilterContextProps {
     with_original_language: string
     with_runtime_gte: number
     with_runtime_lte: number
+    with_watch_providers: string
 }
 
 const filters: FilterContextProps = {
@@ -27,11 +29,12 @@ const filters: FilterContextProps = {
     release_date_lte: "",
     sort_by: "",
     vote_average_gte: 0,
-    vote_average_lte: 0,
+    vote_average_lte: 10,
     watch_region: "",
     with_original_language: "",
     with_runtime_gte: 0,
-    with_runtime_lte: 0,
+    with_runtime_lte: 400,
+    with_watch_providers: "",
 }
 
 export const FilterContext = createContext<FilterContextProps>(filters)
@@ -41,7 +44,7 @@ interface FilterProviderProps {
 }
 
 const FilterProvider = ({ children }: FilterProviderProps) => {
-    return <FilterContext.Provider value={filters}>{children}</FilterContext.Provider>
+    return <FilterContext.Provider value={{ ...filters }}>{children}</FilterContext.Provider>
 }
 
 export default FilterProvider
