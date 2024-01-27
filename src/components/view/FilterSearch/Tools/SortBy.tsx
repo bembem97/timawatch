@@ -13,11 +13,15 @@ interface SortByProps {
 }
 
 const SortBy = ({ sortedBy }: SortByProps) => {
-    const [sort, setSort] = useState(sortBy[1])
+    const byRatings = sortBy.find((sorted) => sorted.value === "vote_average.desc")
+    const byPopularity = sortBy[1]
+    const status = sortedBy === "top-rated" ? byRatings : byPopularity
+
+    const [sort, setSort] = useState(status)
 
     return (
         <ListBox value={sort} onChange={setSort}>
-            <ListBoxButton>{sort.label}</ListBoxButton>
+            <ListBoxButton>{sort?.label}</ListBoxButton>
             <ListBoxOptions>
                 {sortBy.map((sorts) => (
                     <ListBoxOption key={sorts.label} value={sorts}>

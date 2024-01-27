@@ -16,9 +16,7 @@ export type FilterGenresProps = {
     name: string
 }
 
-export type FilterCertificationsProps = {
-    certification: string
-}
+export type FilterCertificationsProps = string
 
 export type FilterLanguagesProps = {
     english_name: string
@@ -29,9 +27,9 @@ export type FilterToolsProps = {
     sortBy: string
     mediaType: MediaProps["media_type"]
     filters: {
+        dates: { maximum: string; minimum: string | undefined }
         country_code: string
         watchRegion: FilterWatchRegionsProps
-
         genres: FilterGenresProps[] | undefined
         certifications: FilterCertificationsProps[] | undefined
         languages: FilterLanguagesProps[] | undefined

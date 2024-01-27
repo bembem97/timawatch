@@ -1,7 +1,11 @@
 "use client"
 import React, { ReactNode, createContext } from "react"
+import useSWR from "swr"
+import fetcher from "~/functions/fetcher"
+import { MediaProps } from "~/types/data/media"
+import { DiscoverDataProps } from "~/types/discover"
 
-export interface FilterContextProps {
+type QueryData = {
     certification: string
     certification_country: string
     first_air_date_gte: string
@@ -19,7 +23,13 @@ export interface FilterContextProps {
     with_watch_providers: string
 }
 
-const filters: FilterContextProps = {
+export interface FilterContextProps {
+    data: DiscoverDataProps
+    isLoading: boolean
+    isError: boolean
+}
+
+const filters = {
     certification: "",
     certification_country: "",
     first_air_date_gte: "",
@@ -37,14 +47,29 @@ const filters: FilterContextProps = {
     with_watch_providers: "",
 }
 
-export const FilterContext = createContext<FilterContextProps>(filters)
+export const FilterContext = createContext<FilterContextProps | undefined>(undefined)
 
 interface FilterProviderProps {
     children: ReactNode
+    media: MediaProps["media_type"]
+    status: string
 }
 
-const FilterProvider = ({ children }: FilterProviderProps) => {
-    return <FilterContext.Provider value={{ ...filters }}>{children}</FilterContext.Provider>
+const FilterProvider = ({ children, media, status }: FilterProviderProps) => {
+    const STATUS = status.replace(/-/g, "_")
+    const { data, isLoading, error } = useSWR(`/api/discover?media=${media}&status=${STATUS}`, fetcher)
+
+    // if (!isLoading) {
+    //     console.log("discover", data)
+    // }
+
+    const DATA: DiscoverDataProps = data
+
+    return (
+        <FilterContext.Provider value={{ data: DATA, isLoading, isError: error }}>
+            {children}
+        </FilterContext.Provider>
+    )
 }
 
 export default FilterProvider

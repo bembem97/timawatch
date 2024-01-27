@@ -24,20 +24,23 @@ const Chip = ({ label, as, clickable, iconStart, variant, color, size, ...rest }
 
     const StartIcon = iconStart
 
+    const SIZE = size || "sm"
+
     return (
         <Component
             {...rest}
             role={roleButton}
             tabIndex={focusable}
-            data-interactive={clickable}
-            className={style({ className, clickable, color, variant, size })}
+            className={style({ className, clickable, color, variant, size: SIZE })}
             onClick={() => setSelected(!selected)}
+            data-interactive={clickable}
+            data-selected={clickable && selected ? "true" : null}
         >
             {StartIcon && StartIcon}
 
             {label}
 
-            {clickable && selected && <Icon icon={CheckCircleIcon} size={size} />}
+            {clickable && selected && <Icon icon={CheckCircleIcon} size={SIZE} />}
         </Component>
     )
 }
